@@ -46,17 +46,24 @@ async function launch() {
   assert.equal(native.profile, profile, 'only the temporary test profile is used');
   assert.equal(native.packaged, packaged);
   assert.equal(native.version, manifest.version);
-  await pet.evaluate(() => {
-    const qa = window.__companionQA = {speeches: [], motions: [], bulletins: [], previous: null};
+  await pet.evaluate(async () => {
+    const state = await window.chii.getState();
+    const qa = window.__companionQA = {speeches: [], motions: [], bulletins: [], previous: null, companionActive: state.config.companionMode === true};
     const capture = () => {
       const speech = document.querySelector('#speech');
       if (speech.hidden) return;
-      const value = {at: Date.now(), content: speech.dataset.content || '', kind: document.querySelector('#speech-kind').textContent,
+      const value = {at: Date.now(), companionActive: qa.companionActive, content: speech.dataset.content || '', kind: document.querySelector('#speech-kind').textContent,
         title: document.querySelector('#speech-title').textContent, body: document.querySelector('#speech-body').textContent,
         meta: document.querySelector('#speech-meta').textContent, character: document.querySelector('#pet-character [data-character]')?.dataset.character};
       const signature = JSON.stringify({...value, at: 0});
       if (signature !== qa.previous) { qa.speeches.push(value); qa.previous = signature; }
     };
+    // The checkbox can wait for layout/actionability while ordinary demo
+    // reports are still valid. Keep those observations for diagnosis, but mark
+    // the exact state boundary rather than treating the click's start as enable.
+    // Renderer state handlers run before this listener; capture also catches a
+    // stock bubble incorrectly retained after a companion-enabled snapshot.
+    qa.unsubscribeState = window.chii.onState(state => {qa.companionActive = state.config.companionMode === true; capture();});
     qa.observer = new MutationObserver(capture);
     qa.observer.observe(document.querySelector('#speech'), {subtree: true, childList: true, characterData: true, attributes: true});
     qa.unsubscribeMotion = window.chii.onMotion(event => qa.motions.push(event));
@@ -123,7 +130,7 @@ async function injectFinancialEvents(app) {
 }
 
 function assertNoFinancialSpeech(speeches) {
-  assert.ok(speeches.length > 0, 'companion speech was observed');
+  assert.ok(speeches.length > 0, 'active companion speech was observed');
   for (const speech of speeches) {
     assert.equal(speech.content, 'companion', 'financial events never replace companion speech');
     assert.equal(speech.kind, names[speech.character]);
@@ -147,7 +154,6 @@ try {
   await dashboard.locator('[data-page="preferences"]').click();
   await dashboard.locator('#speech-scale-input').evaluate(input => {input.value = '150'; input.dispatchEvent(new Event('input', {bubbles: true}));});
   await dashboard.locator('#interval-input').fill('11');
-  await pet.evaluate(() => {window.__companionQA.speeches = []; window.__companionQA.previous = null;});
   await dashboard.locator('#companion-mode-input').check();
   await dashboard.waitForFunction(async () => {
     const state = await window.chii.getState();
@@ -210,10 +216,13 @@ try {
   report.recurring = {elapsedMs: Date.now() - recurringStart, previous: last.title, next: recurring.title};
   assert.ok(report.recurring.elapsedMs >= 1000, 'new dialogue arrives from the random schedule rather than immediately replacing dismissal');
   const observation = await pet.evaluate(() => ({speeches: window.__companionQA.speeches, motions: window.__companionQA.motions, bulletins: window.__companionQA.bulletins}));
-  assertNoFinancialSpeech(observation.speeches);
+  report.observedSpeech = observation.speeches;
+  const activeSpeech = observation.speeches.filter(speech => speech.companionActive);
+  report.observationBoundary = {inactiveNotices: observation.speeches.filter(speech => !speech.companionActive && speech.content === 'notice').length, activeSpeeches: activeSpeech.length};
+  assert.ok(report.observationBoundary.inactiveNotices > 0, 'ordinary stock setup notices are retained with the inactive state flag');
+  assertNoFinancialSpeech(activeSpeech);
   assert.equal(observation.motions.filter(event => event.alert && !event.alert.id.startsWith('qa-companion-')).length, 0, 'main sends no automatic stock alerts while companion mode is active');
   assert.equal(observation.bulletins.filter(event => !event.__qaCompanion).length, 0, 'main sends no periodic stock bulletins while companion mode is active');
-  report.observedSpeech = observation.speeches;
   report.checks.push('random dialogue resumes after dismissal with a different line; market events stay paused for more than one six-second report interval');
   await dashboard.evaluate(async () => {
     window.scrollTo({top: 0, left: 0, behavior: 'instant'});
