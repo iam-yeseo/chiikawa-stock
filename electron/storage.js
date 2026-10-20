@@ -2,14 +2,41 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 
-export async function atomicWrite(file, data) {
-  await fs.mkdir(path.dirname(file), { recursive: true, mode: 0o700 });
-  const temporary = `${file}.${process.pid}.${randomUUID()}.tmp`;
-  try {
-    await fs.writeFile(temporary, data, { mode: 0o600 });
-    await fs.rename(temporary, file);
-  } finally { await fs.rm(temporary, { force: true }); }
+const RENAME_RETRY_DELAYS = [25, 50, 100, 200, 400];
+const TRANSIENT_RENAME_CODES = new Set(['EPERM', 'EACCES', 'EBUSY']);
+
+export function createAtomicWriter({ fileSystem = fs, platform = process.platform, wait = ms => new Promise(resolve => setTimeout(resolve, ms)) } = {}) {
+  const pending = new Map();
+
+  async function write(file, data) {
+    await fileSystem.mkdir(path.dirname(file), { recursive: true, mode: 0o700 });
+    const temporary = `${file}.${process.pid}.${randomUUID()}.tmp`;
+    try {
+      await fileSystem.writeFile(temporary, data, { mode: 0o600 });
+      for (let attempt = 0; ; attempt += 1) {
+        try { await fileSystem.rename(temporary, file); break; }
+        catch (error) {
+          if (platform !== 'win32' || !TRANSIENT_RENAME_CODES.has(error.code) || attempt >= RENAME_RETRY_DELAYS.length) throw error;
+          // Windows readers/virus scanners can briefly hold the destination open.
+          await wait(RENAME_RETRY_DELAYS[attempt]);
+        }
+      }
+    } finally { await fileSystem.rm(temporary, { force: true }); }
+  }
+
+  return function atomicWrite(file, data) {
+    const target = path.resolve(file);
+    const key = platform === 'win32' ? target.toLowerCase() : target;
+    // Queue before any I/O, so the last queued value wins even after a failed write.
+    const operation = (pending.get(key) ?? Promise.resolve()).catch(() => {}).then(() => write(target, data));
+    pending.set(key, operation);
+    const release = () => { if (pending.get(key) === operation) pending.delete(key); };
+    operation.then(release, release);
+    return operation;
+  };
 }
+
+export const atomicWrite = createAtomicWriter();
 
 export async function readConfig(directory, fallback, normalize) {
   try { return normalize(JSON.parse(await fs.readFile(path.join(directory, 'settings.json'), 'utf8'))); }

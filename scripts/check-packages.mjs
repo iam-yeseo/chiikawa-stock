@@ -19,7 +19,7 @@ const packaged=[
   `${output}/mac/${manifest.build.executableName || manifest.productName}.app/Contents/Resources/app.asar`,
   `${output}/win-unpacked/resources/app.asar`
 ];
-const sourceFiles=(await Promise.all(['electron','lib','dist'].map(files))).flat();
+const sourceFiles=(await Promise.all(['electron','lib','dist'].map(files))).flat().concat('assets/fonts/NOTICE.md');
 const report=[];
 for(const archive of packaged){
   const packageManifest=JSON.parse(asar.extractFile(archive,'package.json').toString('utf8'));

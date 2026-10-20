@@ -42,6 +42,7 @@
       "dist/**/*",
       "electron/**/*",
       "lib/**/*",
+      "assets/fonts/NOTICE.md",
       "package.json"
     ],
     "artifactName": "Meonjakju-${version}-${os}-${arch}.${ext}",

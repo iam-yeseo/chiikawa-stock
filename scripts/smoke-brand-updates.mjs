@@ -102,7 +102,11 @@ try {
   assert.equal(await dashboard.locator('#install-update').isVisible(), false);
   report.checks.push('update IPC available in settings and rejected from pet', 'isolated demo cannot download or install updates');
   // Only renderer events are injected: no updater controller, release URL or install is touched.
-  await app.evaluate(({BrowserWindow}) => BrowserWindow.getAllWindows().find(window => window.webContents.getURL().includes('index.html')).webContents.send('chii:update-state', {status: 'available', mode: 'manual', currentVersion: '0.5.0', latestVersion: '0.5.1', message: '가상 업데이트 안내 · 다운로드 후 앱을 교체해 주세요.', progress: 0}));
+  await app.evaluate(({BrowserWindow}) => {
+    for (const window of BrowserWindow.getAllWindows()) window.webContents.send('chii:update-state', {status: 'available', mode: 'manual', currentVersion: '0.5.0', latestVersion: '0.5.1', message: '가상 업데이트 안내 · 다운로드 후 앱을 교체해 주세요.', progress: 0});
+  });
+  await pet.waitForFunction(() => document.querySelector('#speech-title').textContent === '0.5.1 새 버전이 있어요');
+  assert.match(await pet.locator('#speech-meta').textContent(), /두 번 클릭/);
   await dashboard.waitForFunction(() => !document.querySelector('#download-update').hidden);
   assert.equal(await dashboard.locator('#install-update').isVisible(), false);
   assert.match(await dashboard.locator('#update-help').textContent(), /앱을 교체/);
@@ -116,7 +120,7 @@ try {
   assert.equal(await dashboard.locator('#check-updates').isDisabled(), true);
   await app.evaluate(({BrowserWindow}) => BrowserWindow.getAllWindows().find(window => window.webContents.getURL().includes('index.html')).webContents.send('chii:update-state', {status: 'downloaded', mode: 'automatic', currentVersion: '0.5.0', latestVersion: '0.5.1', message: '가상 설치 준비 상태', progress: 100}));
   await dashboard.waitForFunction(() => !document.querySelector('#install-update').hidden);
-  report.checks.push('manual update notice, download-only UI and header navigation', 'automatic update progress and explicit install UI via synthetic events');
+  report.checks.push('pet update bubble independent of OS notification support', 'manual update notice, download-only UI and header navigation', 'automatic update progress and explicit install UI via synthetic events');
   await app.evaluate(({BrowserWindow}, update) => BrowserWindow.getAllWindows().find(window => window.webContents.getURL().includes('index.html')).webContents.send('chii:update-state', update), update);
   await settle(dashboard);
   await capture(dashboard, `brand-preferences-${manifest.version}${suffix}.png`);

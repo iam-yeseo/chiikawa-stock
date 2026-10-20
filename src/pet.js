@@ -25,6 +25,7 @@ const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
 let speechUntil = 0, bulletinQueue = [], lastBulletin = 0, nextBulletinAt = 0, currentInteractive = false, stopped = false, bulletinTimer;
 let previousMode = null, previousConnectionState = null;
 let speechVoiceKey=null,speechTitleKey=null;
+const announcedUpdates=new Set();
 let pointerPosition = null, nextHitTestAt = 0;
 const nativeDraggingAvailable=isDesktop && ['beginPetDrag','endPetDrag','onPetPlacement'].every(name=>typeof bridge[name]==='function');
 let dragSessionCounter=0,nativeViewport=null;
@@ -70,6 +71,12 @@ function showSpeech({kind='먼작주',title,voiceKey=null,body='',meta='',tone='
   place();
 }
 function hideSpeech() {speech.hidden = true; speechUntil = 0;}
+function onUpdateState(state) {
+  if(state?.status!=='available'||!/^\d+\.\d+\.\d+$/.test(state.latestVersion)||announcedUpdates.has(state.latestVersion))return;
+  announcedUpdates.add(state.latestVersion);
+  showSpeech({kind:'먼작주 · 업데이트',title:`${state.latestVersion} 새 버전이 있어요`,
+    body:'설정에서 업데이트를 내려받을 수 있어요.',meta:'캐릭터 두 번 클릭 · 설정 열기',duration:15000});
+}
 function quoteSpeech(quote) {
   quote = snapshot?.quotes.find(item => item.symbol === quote.symbol && item.market === quote.market) || quote;
   const demo = snapshot?.mode === 'demo';
@@ -288,6 +295,7 @@ try {
   applyState(await bridge.getState());
   const b=bounds();x=b.right;y=b.bottom;place();
   disposers.push(bridge.onState(applyState),bridge.onMotion(onMotion));
+  if(typeof bridge.onUpdateState==='function')disposers.push(bridge.onUpdateState(onUpdateState));
   if(typeof bridge.onBulletin==='function')disposers.push(bridge.onBulletin(onBulletin));
   if(nativeDraggingAvailable)disposers.push(bridge.onPetPlacement(applyPetPlacement));
   if(nativeDraggingAvailable && typeof bridge.onPetDragEnded==='function')disposers.push(bridge.onPetDragEnded(applyPetDragEnded));

@@ -16,6 +16,7 @@ const root = path.resolve(here, '..');
 // visible rename. Changing this name would strand existing encrypted API keys.
 app.setName('Chiikawa Stocks');
 app.setPath('userData', path.join(app.getPath('appData'), 'Chiikawa Stocks'));
+if (process.platform === 'win32') app.setAppUserModelId('im.chii.stocks');
 // Explicit preview runs use a separate profile and never open the user's API vault.
 const demoPreview = app.commandLine.hasSwitch('demo-preview');
 if ((!app.isPackaged || demoPreview) && process.env.CHII_USER_DATA) app.setPath('userData', path.resolve(process.env.CHII_USER_DATA));
@@ -239,13 +240,17 @@ if(gotLock)app.whenReady().then(async()=>{
     enabled:app.isPackaged&&!demoPreview,updater:process.platform==='win32'?electronUpdater.autoUpdater:undefined,openExternal:url=>shell.openExternal(url),
     beforeInstall:async()=>{await configWrite;}});
   updates.on('state',state=>{
-    if(settingsWindow&&!settingsWindow.isDestroyed())settingsWindow.webContents.send('chii:update-state',state);
+    broadcast('chii:update-state',state);
     if(state.status!=='downloading')updateTray();
     if(state.status==='available'&&!announcedUpdates.has(state.latestVersion)){
       announcedUpdates.add(state.latestVersion);
       if(Notification.isSupported()){
         const notice=new Notification({title:`먼작주 ${state.latestVersion} 업데이트`,body:'새 버전이 있어요. 눌러서 업데이트를 확인해 주세요.',silent:true});
-        notice.on('click',showSettings);notice.show();
+        notice.on('click',showSettings);
+        // The pet bubble and tray remain available if the OS rejects a toast
+        // (in particular, macOS notifications require a signed application).
+        notice.on('failed',()=>{});
+        try { notice.show(); } catch {}
       }
     }
   });
