@@ -8,13 +8,13 @@
 
 | 범위 | 결과 | 근거·남은 확인 |
 | --- | --- | --- |
-| 단위·회귀 테스트 | 통과 | `npm test`: 125개 통과, 실패 0 |
+| 단위·회귀 테스트 | 통과 | `npm test`: 130개 통과, 실패 0 |
 | 프런트엔드 빌드 | 통과 | 최종 로고·세 캐릭터·글꼴 포함 |
 | 소스 Electron 실행 | 통과 | desktop / portfolio / characters / roaming 및 브랜드·업데이트 IPC 검사 |
-| Mac Apple Silicon 패키지 | 통과 | 기본 실행·캐릭터·브랜드 검사 및 일반 모드 실시간 연결 확인 |
-| Mac Intel 패키지 | 빌드·무결성 통과 | Intel 실기기 실행 미확인 |
-| Windows x64 패키지 | 빌드·무결성 통과 | Windows 네이티브 CI·실제 설치/업데이트 실행 대기 |
-| GitHub 코드·정식 릴리스 | 대기 | push, CI 및 공개 릴리스 파일·업데이트 피드 확인 전 |
+| Mac Apple Silicon 패키지 | 최종 로컬 검증 통과 | 저장 순서·업데이트 알림 보완 후 기본 실행·브랜드·펫 알림 검사 통과 |
+| Mac Intel 패키지 | 최종 빌드·무결성 통과 | Intel 실기기 실행 미확인 |
+| Windows x64 패키지 | 최종 빌드·무결성 통과 | 최초 Windows CI의 저장 경합을 수정하고 CI 재실행 중 |
+| GitHub 코드·정식 릴리스 | 코드 push 완료, CI 진행 중 | `d96eac4`, [검증 실행](https://github.com/iam-yeseo/chiikawa-stock/actions/runs/39374387823). 정식 릴리스·업데이트 피드 미공개 |
 | Google Drive 코드 백업 | 대기 | 지정 폴더 업로드와 원본 일치 확인 전 |
 
 원격 CI·배포·백업이 끝나면 결과를 갱신한다. 로컬 파일 생성이나 소스 테스트 통과만으로 원격 배포 완료를 표시하지 않는다.
@@ -31,6 +31,14 @@
 - **펫 정리:** 산책 설정이 실제 바뀔 때만 중지 상태를 정리하고 대체 정기 알림의 최소 간격을 0.1분으로 맞췄다.
 
 전일 종가 날짜 계산, 기존 요청 그룹 간격, 보유 자산 필드·통화 매핑, WS PING/pong·토픽 형식과 비동기 revision 가드는 유지했다. safeStorage·CSP·격리 및 IPC 발신 창 검증도 유지한다.
+
+## Windows CI에서 발견한 저장 경합
+
+최초 Windows 네이티브 CI는 `session.json`으로 20개 저장이 동시에 진행되는 테스트에서 `rename`의 `EPERM` 오류로 실패했다. Mac에서 통과했던 동일 테스트가 실제 Windows 파일 교체 경합을 드러냈다.
+
+`atomicWrite`에 대상 경로별 저장 큐를 두어 호출 순서대로 처리하고 마지막으로 큐에 넣은 값이 남게 수정했다. 실패한 저장 뒤에도 다음 저장을 진행하며 다른 대상 파일은 독립적으로 저장한다. Windows의 `EPERM`·`EACCES`·`EBUSY`만 25/50/100/200/400ms 간격으로 최대 5회 재시도한다. 기존 파일을 삭제한 뒤 쓰거나 평문으로 우회하지 않는다.
+
+최종 순서·임시 파일 정리, 실패 후 큐 복구, 기존 파일 보존, 재시도 한도, 비-Windows/영구 오류의 즉시 실패를 검증했다. 저장 테스트 8개와 전체 테스트 **130개**가 로컬에서 통과했다. Windows CI 재실행 결과는 아직 확정하지 않았다.
 
 ## 캐릭터와 UI
 
@@ -54,7 +62,7 @@
 | `npm run test:portfolio` | 계좌 마스킹, KRW/USD 분리, 자동 관심종목, 새로고침, 주기 안내·IPC 거부 | [portfolio-0.5.0.json](docs/verification/0.5.0/portfolio-0.5.0.json) |
 | `npm run test:characters` | 반복 선택, 9개 반응 타임라인, canvas 색상·경계, 동작 줄이기, 재실행 복원 | [characters-0.5.0.json](docs/verification/0.5.0/characters-0.5.0.json) |
 | `npm run test:roaming` | 연속 알림 중 이동, 산책 끄기·재개, 실제 시간 이동 | [roaming-0.5.0.json](docs/verification/0.5.0/roaming-0.5.0.json) |
-| `node scripts/smoke-brand-updates.mjs` | 네이티브 제목·버전, 글꼴·로고, 삭제한 UI, 면책 문구, 업데이트 IPC·화면 | [brand-updates-0.5.0.json](docs/verification/0.5.0/brand-updates-0.5.0.json) |
+| `node scripts/smoke-brand-updates.mjs` | 네이티브 제목·버전, 글꼴·로고, 삭제한 UI, 면책 문구, 업데이트 IPC·화면·펫 안내 말풍선 | [brand-updates-0.5.0.json](docs/verification/0.5.0/brand-updates-0.5.0.json) |
 
 산책 검사에서 약 **3.0초** 안에 첫 이동을 확인했고, 30초간 시작점 대비 최대 이동은 약 **285px**였다. 말풍선 표시 중에도 이동했다. 각 실행 검사의 renderer 오류는 0개다.
 
@@ -66,13 +74,15 @@ Windows는 NSIS 설치판의 다운로드·재시작 설치를 사용자 동작�
 
 시작 15초 후와 6시간 주기 확인, 안정 버전·정확한 저장소/태그/다운로드 URL 검증, 중복 확인 합치기, 오류·재시도 처리를 테스트했다. 설정 창만 업데이트 IPC를 호출할 수 있고 펫 창 호출은 거부했다. 데모에서는 실제 업데이트 네트워크·다운로드·설치를 막는다. 수동 안내·자동 다운로드 진행률·명시적 설치 버튼은 합성 이벤트로 검사했다. **실제 이전 버전에서 새 버전으로 설치되는 전체 과정은 아직 검증하지 않았다.**
 
+업데이트 상태는 펫에도 전달하여 새 버전 안내 말풍선을 표시한다. 서명 없는 Mac에서 OS 알림이 표시되지 않아도 앱 자체 안내를 볼 수 있다. Windows 알림의 AppUserModelId도 지정했다. 펫의 새 버전 말풍선은 소스 Electron 검사에서 합성 업데이트 이벤트로 확인했으며, 펫이 다운로드·설치 IPC를 직접 호출할 수 없다는 제한은 유지한다.
+
 초기 Mac 패키지의 `SIGTRAP` 종료를 확인했다. 번들 및 helper의 내부 이름을 ASCII `Meonjakju`로 구성하고 `CFBundleDisplayName`은 `먼작주`로 유지한 뒤 최종 패키지가 정상 실행됐다. 업데이트 모듈의 오류로 확인된 것은 아니다. `app.setName('Chiikawa Stocks')`, 기존 userData 위치와 `im.chii.stocks`는 이전 설정·Keychain 호환을 위해 유지한다.
 
-최종 Mac Apple Silicon 패키지 검증:
+저장 경합·펫 업데이트 안내 보완을 포함한 최종 Mac Apple Silicon 패키지의 기본 실행과 브랜드 검사를 다시 수행했다.
 
 - [기본 실행](docs/verification/0.5.0/packaged-smoke.json): 버전 0.5.0, 설정·펫 두 창, 항상 위 펫, 160% 말풍선 화면 내 배치, renderer 오류 없음.
-- [브랜드·업데이트 IPC](docs/verification/0.5.0/brand-updates-0.5.0-packaged.json): 소스와 같은 제목·글꼴·로고·삭제 UI·안전한 업데이트 동작 검사 통과.
-- [캐릭터 검사](docs/verification/0.5.0/characters-0.5.0-packaged.json): 세 캐릭터 선택·타임라인·canvas·동작 줄이기·재실행 복원 통과. 약 29.4초.
+- [브랜드·업데이트 IPC](docs/verification/0.5.0/brand-updates-0.5.0-packaged.json): 제목·글꼴·로고·삭제 UI·안전한 업데이트 동작과 OS 알림에 의존하지 않는 펫 업데이트 말풍선 검사 통과.
+- [캐릭터 검사](docs/verification/0.5.0/characters-0.5.0-packaged.json): 앞선 패키지에서 세 캐릭터 선택·타임라인·canvas·동작 줄이기·재실행 복원 통과. 약 29.4초. 이후 캐릭터 이미지와 모션 정의는 변경하지 않았다.
 
 `release/0.5.0/`에 다음 파일을 생성했다.
 
@@ -81,12 +91,12 @@ Windows는 NSIS 설치판의 다운로드·재시작 설치를 사용자 동작�
 - `Meonjakju-0.5.0-win-x64.exe`
 - `Meonjakju-0.5.0-win-x64.zip`
 
-[패키지 무결성 검사](docs/verification/0.5.0/package-integrity.json)에서 세 플랫폼 app.asar 버전이 모두 0.5.0이고 각각 **30개 코드·자산 파일**이 최종 소스와 일치했다. 각 ZIP/EXE의 크기와 SHA-256도 같은 기록에 포함한다. 이 로컬 체크섬은 이후 CI가 다시 만든 파일의 체크섬을 대신하지 않는다.
+[최종 패키지 무결성 검사](docs/verification/0.5.0/package-integrity.json)에서 세 플랫폼 app.asar 버전이 모두 0.5.0이고 각각 **31개 코드·자산·고지 파일**이 최종 소스와 일치했다. 저장 경합·알림 보완을 포함한 재빌드 ZIP/EXE의 크기와 SHA-256도 갱신했다. 이 로컬 체크섬은 이후 CI가 다시 만든 파일의 체크섬을 대신하지 않는다.
 
 Apple Developer ID 서명·공증과 Windows 인증서 서명은 미완료다. Windows 네이티브 실행·실제 업그레이드와 Intel Mac 실기기 실행을 소스 검증 결과로 대체하지 않는다.
 
 ## 실사용 확인 범위
 
-최종 Mac 패키지를 일반 모드로 실행한 뒤 네이티브 화면의 `먼작주 0.5.0`, LIVE 연결 상태와 기존 API 키를 다시 입력하지 않고 시세를 수신하는 것을 확인했다. 앱은 실행 상태로 남겨 두었다. 계좌 번호·보유 수량·평가금액 등 금융값은 이 기록에 포함하지 않았다.
+저장 경합·알림 보완 전 Mac 패키지를 일반 모드로 실행한 뒤 네이티브 화면의 `먼작주 0.5.0`, LIVE 연결 상태와 기존 API 키를 다시 입력하지 않고 시세를 수신하는 것을 확인했다. 계좌 번호·보유 수량·평가금액 등 금융값은 이 기록에 포함하지 않았다.
 
 실제 키를 사용하는 상장폐지 종목 혼합 조회, 실제 두 번째 계좌의 절전 복귀, 100개 실제 관심종목의 설정 파일 저장 횟수 관찰은 이번 자동 검증에 포함하지 않았다. 해당 오류·복구 경로는 합성 API 응답과 회귀 테스트로 확인했다. 사용자 라이브 프로필과 인증 정보는 보존했다.

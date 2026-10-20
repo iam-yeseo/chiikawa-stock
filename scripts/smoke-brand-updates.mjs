@@ -31,9 +31,24 @@ async function settle(page) {
   });
 }
 async function capture(page, filename) {
-  await page.evaluate(() => window.scrollTo({top: 0, behavior: 'instant'}));
-  await page.waitForFunction(() => scrollY === 0);
   await settle(page);
+  await page.evaluate(async () => {
+    const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
+    const startedAt = performance.now();
+    let lastX = scrollX, lastY = scrollY, stableSince = startedAt;
+    // Native smooth scrolling is not a Web Animation. Let the update-heading
+    // navigation finish before resetting the screenshot position.
+    while (performance.now() - stableSince < 180) {
+      await frame();
+      const now = performance.now();
+      if (Math.abs(scrollX - lastX) > 0.1 || Math.abs(scrollY - lastY) > 0.1) stableSince = now;
+      lastX = scrollX; lastY = scrollY;
+      if (now - startedAt > 5000) throw new Error('Page scrolling did not settle before capture');
+    }
+    window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+    await frame(); await frame();
+  });
+  await page.waitForFunction(() => Math.abs(scrollY) < 1 && Math.abs(scrollX) < 1, undefined, {timeout: 5000});
   await page.screenshot({path: path.join(output, filename), fullPage: true, animations: 'disabled', style: '#toast{visibility:hidden}'});
 }
 

@@ -16,6 +16,7 @@
     "entrance animation completed before final screenshots",
     "update IPC available in settings and rejected from pet",
     "isolated demo cannot download or install updates",
+    "pet update bubble independent of OS notification support",
     "manual update notice, download-only UI and header navigation",
     "automatic update progress and explicit install UI via synthetic events"
   ],
