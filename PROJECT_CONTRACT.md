@@ -2,6 +2,10 @@
 
 Independent Electron application for Windows and macOS. Korean UI. Read-only quote monitoring and account/stock-asset lookup; no orders. Renderer uses Vite vanilla JavaScript ES modules. Node ESM main process. Original char/ files are read-only references.
 
+## Release completion and retention
+
+Follow `AGENTS.md` after every update: finish validation and release, upload the final source backup to the user's designated Google Drive folder and verify the downloaded bytes, then remove obsolete local installers and task-specific temporary files. Retain the latest packages and running app, source/Git history, original images/fonts, production assets, unique verification records, and user settings/credentials. Do not delete cloud backups or historical GitHub releases as part of local cleanup.
+
 ## Ownership
 - Root: package.json, Vite/build configuration, electron/, scripts/, integration and packaging.
 - market agent: lib/ (service, defaults, validation, alert engine), tests/market*.test.js.
