@@ -6,6 +6,7 @@ import {PET_SIZE} from '../lib/config.js';
 import {petBounds, clampPetPosition} from '../lib/pet-geometry.js';
 import {PetRoamingSchedule, chooseRoamingTarget} from '../lib/pet-roaming.js';
 import {speechPlacement} from '../lib/speech-layout.js';
+import {pickCompanionDialogue, companionDialogueDelay} from '../lib/companion-dialogue.js';
 
 const pet = document.querySelector('#pet');
 const hitbox = document.querySelector('#pet-character');
@@ -25,6 +26,7 @@ const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
 let speechUntil = 0, bulletinQueue = [], lastBulletin = 0, nextBulletinAt = 0, currentInteractive = false, stopped = false, bulletinTimer;
 let previousMode = null, previousConnectionState = null;
 let speechVoiceKey=null,speechTitleKey=null;
+let nextCompanionAt=0,lastCompanionLineId=null;
 const announcedUpdates=new Set();
 let pointerPosition = null, nextHitTestAt = 0;
 const nativeDraggingAvailable=isDesktop && ['beginPetDrag','endPetDrag','onPetPlacement'].every(name=>typeof bridge[name]==='function');
@@ -34,7 +36,8 @@ const randomRange=([low,high])=>low+Math.random()*(high-low);
 const ease=value=>{const n=Math.max(0,Math.min(1,value));return n*n*(3-2*n);};
 function stopWalking(delay=2000){target=null;stepping=false;walkBurstUntil=0;walkPauseUntil=0;turnDuringWalk=false;roaming.resume(performance.now(),delay);}
 function finishWalk(now){target=null;stepping=false;walkBurstUntil=0;walkPauseUntil=0;turnDuringWalk=false;roaming.rest(now);}
-function walkingEnabled(){return snapshot?.config.roaming && !motionPreference.matches && !dragging && menu.hidden && !document.hidden;}
+function companionEnabled(){return snapshot?.config.companionMode===true;}
+function walkingEnabled(){return (companionEnabled()||snapshot?.config.roaming) && !motionPreference.matches && !dragging && menu.hidden && !document.hidden;}
 const money = (price, currency = 'KRW') => Number.isFinite(price) ? (currency === 'USD' ? `$${price.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}` : `${Math.round(price).toLocaleString('ko-KR')}원`) : '가격 확인 중';
 const pct = value => Number.isFinite(value) ? `${value > 0 ? '+' : ''}${value.toFixed(2)}%` : '기준가 확인 중';
 function viewport(){return dragging?.native && nativeViewport ? nativeViewport : {width:innerWidth,height:innerHeight};}
@@ -56,7 +59,7 @@ function place({clamp=!dragging?.native}={}) {
   pet.classList.toggle('speech-below',y < 180);
   placeSpeech();
 }
-function showSpeech({kind='먼작주',title,voiceKey=null,body='',meta='',tone='normal',duration=8000}) {
+function showSpeech({kind='먼작주',title,voiceKey=null,body='',meta='',tone='normal',duration=8000,content='notice'}) {
   speechVoiceKey=voiceKey;
   const voice=profile.speech[voiceKey]||'';
   speechTitleKey=Object.keys(profile.speech).find(key=>profile.speech[key]===title)||null;
@@ -67,10 +70,23 @@ function showSpeech({kind='먼작주',title,voiceKey=null,body='',meta='',tone='
   speechVoice.textContent=voice;speechVoice.hidden=!voice;
   speechVoice.setAttribute('aria-label',`${profile.name}: ${voice}`);
   speechVoice.dataset.speaker=profile.id;
+  speech.dataset.content=content;
   speech.dataset.tone = tone; speech.hidden = false; speechUntil = performance.now()+duration;
   place();
 }
 function hideSpeech() {speech.hidden = true; speechUntil = 0;}
+function clearReportsAndSpeech() {
+  bulletinQueue=[];lastBulletin=0;nextBulletinAt=0;nextCompanionAt=0;
+  pendingMotion=null;reactionUntil=0;reactionAction='';
+  speechVoiceKey=null;speechTitleKey=null;hideSpeech();stopWalking();
+}
+function showCompanionSpeech({action=null,react=true}={}) {
+  const line=pickCompanionDialogue(profile.id,{previousId:lastCompanionLineId,action});
+  lastCompanionLineId=line.id;
+  showSpeech({kind:profile.name,title:line.text,content:'companion',duration:6500});
+  nextCompanionAt=performance.now()+companionDialogueDelay();
+  if(react && ['happy','sleep'].includes(line.action))playMotion(line.action,2400);
+}
 function onUpdateState(state) {
   if(state?.status!=='available'||!/^\d+\.\d+\.\d+$/.test(state.latestVersion)||announcedUpdates.has(state.latestVersion))return;
   announcedUpdates.add(state.latestVersion);
@@ -78,6 +94,7 @@ function onUpdateState(state) {
     body:'설정에서 업데이트를 내려받을 수 있어요.',meta:'캐릭터 두 번 클릭 · 설정 열기',duration:15000});
 }
 function quoteSpeech(quote) {
+  if(companionEnabled()||!quote)return;
   quote = snapshot?.quotes.find(item => item.symbol === quote.symbol && item.market === quote.market) || quote;
   const demo = snapshot?.mode === 'demo';
   const stale = quote.stale || !Number.isFinite(quote.price);
@@ -87,7 +104,7 @@ function quoteSpeech(quote) {
   showSpeech({kind:demo ? held ? '데모 · 보유종목 소식' : '데모 · 가상 시세' : stale ? '시세 확인 필요' : held ? '보유종목 소식' : '관심종목 소식',title:`${quote.name} ${money(quote.price,quote.currency)}`,voiceKey:stale?'idle':'talk',body:stale ? '새 시세 수신 대기 중' : Number.isFinite(quote.changePercent) ? `${baseline} ${pct(quote.changePercent)}` : '등락률 계산에 필요한 기준가 없음',meta:`${quote.symbol}${updated ? ` · ${updated} 기준` : ''}${stale ? ' · 마지막 수신값' : ''}`,duration:5700});
 }
 function onBulletin(event) {
-  if (!snapshot || !event?.quotes?.length) return;
+  if (!snapshot || companionEnabled() || !event?.quotes?.length) return;
   const at = Number(event.at) || Date.now();
   if (at <= lastBulletin) return;
   lastBulletin = at;
@@ -105,7 +122,7 @@ function onBulletin(event) {
 }
 function scheduleFallback() {
   clearInterval(bulletinTimer);
-  if (typeof bridge.onBulletin === 'function') return;
+  if (companionEnabled() || typeof bridge.onBulletin === 'function') return;
   bulletinTimer = setInterval(()=>onBulletin({quotes:snapshot?.quotes,at:Date.now()}), Math.max(0.1,Number(snapshot?.config.intervalMinutes)||5)*60000);
 }
 function applyState(state) {
@@ -113,8 +130,12 @@ function applyState(state) {
   const firstState=!snapshot;
   const oldCharacter=snapshot?.config.characterId||DEFAULT_CHARACTER_ID;
   const oldRoaming=snapshot?.config.roaming;
+  const oldCompanion=companionEnabled();
   snapshot = state;
-  if(firstState||oldCharacter!==(state.config.characterId||DEFAULT_CHARACTER_ID)){
+  const companionChanged=oldCompanion!==companionEnabled();
+  const characterChanged=oldCharacter!==(state.config.characterId||DEFAULT_CHARACTER_ID);
+  if(companionChanged){clearReportsAndSpeech();lastCompanionLineId=null;}
+  if(firstState||characterChanged){
     const selected=getCharacterProfile(state.config.characterId);
     profile=selected.available?selected:getCharacterProfile(DEFAULT_CHARACTER_ID);
     if(speechVoiceKey){
@@ -125,34 +146,39 @@ function applyState(state) {
     if(speechTitleKey)document.querySelector('#speech-title').textContent=profile.speech[speechTitleKey];
     character.setCharacter(profile.id);roaming.idleMs=profile.motion.idleMs;stopWalking();
     document.title=`먼작주 · ${profile.name}`;
-    document.querySelector('#pet-world').setAttribute('aria-label',`${profile.name} 주식 친구`);
     hitbox.setAttribute('aria-label',`${profile.name}. 드래그로 이동, 두 번 클릭하면 설정, 오른쪽 클릭하면 메뉴.`);
     document.querySelector('#hide-pet').firstChild.textContent=`${profile.name} 숨기기 `;
   }
+  document.querySelector('#pet-world').setAttribute('aria-label',`${profile.name} ${companionEnabled()?'캐릭터 친구':'주식 친구'}`);
   const nextSize = Math.min(PET_SIZE.max,Math.max(PET_SIZE.min,Number(state.config.petSize)||PET_SIZE.default));
   if (size !== nextSize) { size = nextSize; character.setSize(size); pet.style.width=`${size}px`;pet.style.height=`${size}px`;place(); }
   speechScale=Math.min(160,Math.max(80,Number(state.config.speechScale)||100))/100;
   speech.style.setProperty('--speech-scale',String(speechScale));
   placeSpeech();
   if (oldRoaming !== undefined && oldRoaming !== state.config.roaming) stopWalking();
-  document.querySelector('#toggle-roaming').firstChild.textContent = state.config.roaming ? '잠깐 쉬기 ' : '산책 시작하기 ';
-  if (oldInterval !== state.config.intervalMinutes) scheduleFallback();
-  if (previousMode !== null && previousMode !== state.mode) {
+  const roamingButton=document.querySelector('#toggle-roaming');
+  roamingButton.disabled=companionEnabled();
+  roamingButton.firstChild.textContent=companionEnabled()?'캐릭터 모드 · 산책 중 ':state.config.roaming?'잠깐 쉬기 ':'산책 시작하기 ';
+  if (oldInterval !== state.config.intervalMinutes || companionChanged) scheduleFallback();
+  if (!companionEnabled() && !companionChanged && previousMode !== null && previousMode !== state.mode) {
     bulletinQueue = [];
     showSpeech({kind:state.mode === 'demo' ? '데모 · 가상 시세' : '먼작주 · 연결 상태',title:state.mode === 'live' ? '실시간 시세 연결' : state.mode === 'demo' ? '데모 모드' : '시세 연결 대기',body:state.mode === 'demo' ? '지금 표시되는 가격은 가상 시세입니다.' : state.connection.message,duration:6500});
   }
-  if (previousConnectionState !== null && previousConnectionState !== 'error' && state.connection.state === 'error') {
+  if (!companionEnabled() && !companionChanged && previousConnectionState !== null && previousConnectionState !== 'error' && state.connection.state === 'error') {
     bulletinQueue = [];
     showSpeech({kind:'먼작주 · 연결 상태',title:'새 시세 수신 중단',body:state.connection.message || '설정에서 연결 상태를 확인해 주세요.',meta:'두 번 클릭 · 연결 설정',duration:12000});
-  } else if (previousConnectionState === 'error' && state.connection.state === 'connected') {
+  } else if (!companionEnabled() && !companionChanged && previousConnectionState === 'error' && state.connection.state === 'connected') {
     showSpeech({kind:'먼작주 · 연결 상태',title:'시세 연결 복구',body:'새로 수신한 가격으로 갱신합니다.',duration:6500});
   }
   previousMode = state.mode;
   previousConnectionState = state.connection.state;
+  if(!firstState && companionEnabled() && (companionChanged||characterChanged))showCompanionSpeech();
 }
 function onMotion({action,alert}={}) {
+  if(alert && companionEnabled())return;
   const next = ['idle','walk','happy','cry','sleep','talk'].includes(action) ? action : 'idle';
   playMotion(next,alert?2400:6500,{preview:!alert});
+  if(companionEnabled()){showCompanionSpeech({action:next,react:false});return;}
   if (alert) {
     const demo = snapshot?.mode === 'demo';
     const quote = snapshot?.quotes.find(item => item.symbol === alert.symbol && (!alert.market || item.market === alert.market));
@@ -235,7 +261,7 @@ hitbox.addEventListener('contextmenu',event=>{event.preventDefault();stopWalking
 hitbox.addEventListener('keydown',event=>{if(event.key==='Enter')bridge.showSettings();if(event.key===' ') {event.preventDefault();menu.hidden=!menu.hidden;}});
 document.querySelector('#dismiss-speech').addEventListener('click',hideSpeech);
 document.querySelector('#settings').addEventListener('click',()=>{menu.hidden=true;if(isDesktop)bridge.showSettings();else window.location.href='./index.html';});
-document.querySelector('#toggle-roaming').addEventListener('click',async()=>{menu.hidden=true;try {applyState(await bridge.updateConfig({roaming:!snapshot.config.roaming}));} catch(error){showSpeech({title:'설정을 저장하지 못했어요.',body:error.message});}});
+document.querySelector('#toggle-roaming').addEventListener('click',async()=>{if(companionEnabled())return;menu.hidden=true;try {applyState(await bridge.updateConfig({roaming:!snapshot.config.roaming}));} catch(error){showSpeech({title:'설정을 저장하지 못했어요.',body:error.message});}});
 document.querySelector('#hide-pet').addEventListener('click',()=>{menu.hidden=true;if(dragging)stopDrag();currentInteractive=false;bridge.setInteractive(false);bridge.hidePet();if(!isDesktop)pet.hidden=true;});
 window.addEventListener('resize',()=>{stopWalking();place();});
 motionPreference.addEventListener('change',()=>stopWalking());
@@ -248,9 +274,10 @@ function tick(now) {
   if(speechUntil && now>speechUntil)hideSpeech();
   // Threshold alerts remain immediate, but cannot postpone every later holding
   // in a scheduled report indefinitely by extending speechUntil.
-  if(bulletinQueue.length && now>=nextBulletinAt && !dragging && menu.hidden){
+  if(!companionEnabled() && bulletinQueue.length && now>=nextBulletinAt && !dragging && menu.hidden){
     quoteSpeech(bulletinQueue.shift());nextBulletinAt=now+5700;
   }
+  if(companionEnabled() && now>=nextCompanionAt && !speechUntil && !dragging && menu.hidden && !document.hidden)showCompanionSpeech();
   if(pendingMotion && now>=pendingMotion.after && !dragging && !document.hidden){
     const pending=pendingMotion;pendingMotion=null;playMotion(pending.action,pending.duration);
   }
@@ -299,7 +326,8 @@ try {
   if(typeof bridge.onBulletin==='function')disposers.push(bridge.onBulletin(onBulletin));
   if(nativeDraggingAvailable)disposers.push(bridge.onPetPlacement(applyPetPlacement));
   if(nativeDraggingAvailable && typeof bridge.onPetDragEnded==='function')disposers.push(bridge.onPetDragEnded(applyPetDragEnded));
-  showSpeech({kind:snapshot.mode==='demo'?'데모 · 가상 시세':'먼작주',title:profile.name,voiceKey:'greeting',body:snapshot.mode==='demo'?'가상 시세를 표시합니다. 두 번 클릭하면 설정이 열립니다.':snapshot.mode==='offline'?'설정에서 API 키를 연결해 주세요. 두 번 클릭하면 설정이 열립니다.':'관심종목 알림이 켜져 있습니다. 캐릭터를 끌어서 옮길 수 있습니다.',meta:'오른쪽 클릭 · 산책과 표시 설정',duration:9000});
+  if(companionEnabled())showCompanionSpeech();
+  else showSpeech({kind:snapshot.mode==='demo'?'데모 · 가상 시세':'먼작주',title:profile.name,voiceKey:'greeting',body:snapshot.mode==='demo'?'가상 시세를 표시합니다. 두 번 클릭하면 설정이 열립니다.':snapshot.mode==='offline'?'설정에서 API 키를 연결해 주세요. 두 번 클릭하면 설정이 열립니다.':'관심종목 알림이 켜져 있습니다. 캐릭터를 끌어서 옮길 수 있습니다.',meta:'오른쪽 클릭 · 산책과 표시 설정',duration:9000});
   requestAnimationFrame(tick);
 } catch(error) {showSpeech({title:'앱 연결을 기다리고 있어요.',body:error.message,duration:30000});}
 window.addEventListener('beforeunload',()=>{if(dragging)stopDrag();stopped=true;clearInterval(bulletinTimer);speechObserver.disconnect();disposers.forEach(fn=>fn?.());character.destroy();bridge.setInteractive(false);});

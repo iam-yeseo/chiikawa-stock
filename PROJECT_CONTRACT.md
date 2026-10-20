@@ -31,9 +31,9 @@ Follow `AGENTS.md` after every update: finish validation and release, upload the
 - quit() -> void
 
 ## Snapshot
-{mode:'demo'|'live'|'offline', connection:{state:'idle'|'connecting'|'connected'|'error',message,updatedAt}, config, quotes:[], alerts:[], credentialsConfigured:boolean, version:'0.5.0'}
+{mode:'demo'|'live'|'offline', connection:{state:'idle'|'connecting'|'connected'|'error',message,updatedAt}, config, quotes:[], alerts:[], credentialsConfigured:boolean, version:'0.5.1'}
 
-Config: {intervalMinutes:5, baseline:'previousClose'|'purchase'|'custom'|'tracking', roaming:true, petSize:150, speechScale:100, autoWatchHoldings:true, characterId:'chiikawa', watchlist:[{symbol,name,market:'KR'|'US',purchasePrice?:number,referencePrice?:number,trackingPrice?:number}]}. lib/characters.js is the shared catalog and motion profile registry. Planned characters cannot be selected until available. Missing legacy characterId defaults to chiikawa without resetting other preferences.
+Config: {intervalMinutes:5, baseline:'previousClose'|'purchase'|'custom'|'tracking', roaming:true, companionMode:false, petSize:150, speechScale:100, autoWatchHoldings:true, characterId:'chiikawa', watchlist:[{symbol,name,market:'KR'|'US',purchasePrice?:number,referencePrice?:number,trackingPrice?:number}]}. lib/characters.js is the shared catalog and motion profile registry. Planned characters cannot be selected until available. Missing legacy characterId defaults to chiikawa without resetting other preferences.
 
 Quote: {symbol,name,market:'KR'|'US',currency:'KRW'|'USD',price,previousClose,changePercent,baselinePrice,updatedAt,stale:boolean}. Missing prices are null, never made-up. updatedAt epoch milliseconds. Alert: {id,symbol,name,price,percent,level,direction:'up'|'down',at}.
 
@@ -59,3 +59,9 @@ Live account and holdings requests share the quote client's existing token and u
 Settings-only updater IPC: `getUpdateState`, `checkForUpdates`, `downloadUpdate`, `installUpdate`, `onUpdateState`. Update state contains status, mode, currentVersion, latestVersion, progress and a locally-authored message. Windows NSIS uses electron-updater; unsigned macOS uses architecture-matched download from the fixed public GitHub repository. No forced install or restart; no credentials in the feed. Native notification is silent.
 
 Visible brand is 먼작주; internal app name/userData remain Chiikawa Stocks to preserve Keychain encryption identity. App ID and icon stay unchanged.
+
+## 0.5.1 companion mode
+
+`companionMode` is a persisted, strictly boolean setting, default false for existing users. Enabling it stops quote/account monitoring and shows the pet, even if hidden. Startup with the setting enabled never starts market traffic. Prior demo/live/offline session preference and dormant `roaming` preference remain unchanged; disabling resumes the prior session. Explicit connect/demo actions leave companion mode before starting monitoring.
+
+The pet roams while companion mode is enabled even if ordinary roaming is off, while respecting OS reduced motion, dragging, hidden windows and context menus. It shows the selected character name above a brief random everyday line, immediately on entry/character change and then every 18–32 seconds. Dialogue avoids consecutive repeats, uses short hesitant sounds for Chiikawa, friendly Korean sentences for Hachiware and exclamations for Usagi. No stock, portfolio, threshold, connection or demo-price text appears in companion bubbles, including queued reports and in-flight events. Update notices remain available. Mode changes clear pending speech/reactions/reports. Preferences apply immediately and survive restart without API credentials.

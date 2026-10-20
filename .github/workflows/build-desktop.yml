@@ -31,12 +31,14 @@ jobs:
       - run: npm run test:roaming
       - run: npm run test:portfolio
       - run: npm run test:characters
+      - run: npm run test:companion
       - run: node scripts/smoke-brand-updates.mjs
       - run: ${{ matrix.command }}
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: 'false'
       - run: node scripts/smoke-characters.mjs --packaged
       - run: node scripts/smoke-brand-updates.mjs --packaged
+      - run: node scripts/smoke-companion.mjs --packaged
       - uses: actions/upload-artifact@v4
         if: always()
         with:

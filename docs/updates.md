@@ -4,6 +4,12 @@
 
 0.5.0은 Windows·macOS 네이티브 CI를 통과하고 [정식 릴리스](https://github.com/iam-yeseo/chiikawa-stock/releases/tag/v0.5.0)와 업데이트 피드를 공개했다. 공개 Windows 설치 파일의 체크섬과 실제 Mac 새 버전 조회·다운로드 주소를 검증했다. 운영체제별 실행 결과와 실제 버전 간 설치 검증의 한계는 [QA.md](../QA.md)에 기록한다.
 
+## 0.5.1 산책 모드
+
+산책 모드는 설정 즉시 적용·저장되며 API 없이 동작한다. 활성 상태에서는 시세·계좌 서비스와 주식 말풍선을 멈추고 캐릭터 이름과 랜덤 대사를 표시한다. 기존 0.5.0 사용자는 기본적으로 꺼진 상태로 업그레이드된다. 기존 API 암호화 저장소·시세 모드·관심종목·캐릭터 설정을 보존한다. Windows 설치판의 사용자 선택형 OTA 경로와 Mac의 ZIP 교체 경로는 0.5.0과 같다.
+
+릴리스 전 `npm run test:companion`과 패키지의 `node scripts/smoke-companion.mjs --packaged`로 산책 전환·세 캐릭터 대사·주식 이벤트 차단·무자격증명 재실행·모드 복귀를 검사한다.
+
 ## 사용자 동작
 
 - 앱 시작 15초 뒤 및 6시간마다 안정 버전을 확인한다. 중복 확인은 합치고 30초 쿨다운을 둔다.
@@ -25,6 +31,7 @@ npm run test:desktop
 npm run test:roaming
 npm run test:portfolio
 npm run test:characters
+npm run test:companion
 node scripts/smoke-brand-updates.mjs
 ```
 

@@ -1,0 +1,348 @@
+{
+  "passed": true,
+  "characterId": "chiikawa",
+  "version": "0.5.1",
+  "packaged": false,
+  "platform": "darwin",
+  "arch": "arm64",
+  "mode": "isolated demo with real wall-clock frames",
+  "movedWithSpeech": true,
+  "firstMovementMs": 3009,
+  "maxDisplacement": 172.6125070436744,
+  "samples": [
+    {
+      "at": 1792484851608,
+      "label": "initial",
+      "x": 2348,
+      "y": 1191,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484853114,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2348,
+      "y": 1191,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484854617,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2327.699951171875,
+      "y": 1185,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484856122,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2299.39990234375,
+      "y": 1176.699951171875,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484857624,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2299.39990234375,
+      "y": 1176.699951171875,
+      "action": "happy",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484859126,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2295.800048828125,
+      "y": 1175.699951171875,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484860630,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2255.60009765625,
+      "y": 1163.800048828125,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484862133,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2238.800048828125,
+      "y": 1158.9000244140625,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484863639,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2204.60009765625,
+      "y": 1148.800048828125,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484865142,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2182.39990234375,
+      "y": 1142.300048828125,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484866645,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2182.39990234375,
+      "y": 1142.300048828125,
+      "action": "cry",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484868150,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2182.39990234375,
+      "y": 1142.300048828125,
+      "action": "cry",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484869653,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2182.39990234375,
+      "y": 1142.300048828125,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484871159,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2182.39990234375,
+      "y": 1142.300048828125,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484872662,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2202.199951171875,
+      "y": 1126.9000244140625,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484874164,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2230.5,
+      "y": 1104.800048828125,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484875668,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2248.300048828125,
+      "y": 1090.800048828125,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484877170,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2281.300048828125,
+      "y": 1065.0999755859375,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484878671,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2291.300048828125,
+      "y": 1057.300048828125,
+      "action": "happy",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484880173,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2291.300048828125,
+      "y": 1057.300048828125,
+      "action": "happy",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484881676,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2297.199951171875,
+      "y": 1052.699951171875,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484881687,
+      "label": "roaming-disabled",
+      "x": 2297.199951171875,
+      "y": 1052.699951171875,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484883192,
+      "label": "disabled",
+      "x": 2297.199951171875,
+      "y": 1052.699951171875,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484884698,
+      "label": "disabled",
+      "x": 2297.199951171875,
+      "y": 1052.699951171875,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484886201,
+      "label": "disabled",
+      "x": 2297.199951171875,
+      "y": 1052.699951171875,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484887215,
+      "label": "resumed",
+      "x": 2297.199951171875,
+      "y": 1052.699951171875,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484888218,
+      "label": "resumed",
+      "x": 2297.199951171875,
+      "y": 1052.699951171875,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484889224,
+      "label": "resumed",
+      "x": 2283.199951171875,
+      "y": 1051.4000244140625,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484890227,
+      "label": "resumed",
+      "x": 2255.300048828125,
+      "y": 1049,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484891231,
+      "label": "resumed",
+      "x": 2235.39990234375,
+      "y": 1047.300048828125,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484892233,
+      "label": "resumed",
+      "x": 2226,
+      "y": 1046.4000244140625,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484893236,
+      "label": "resumed",
+      "x": 2198,
+      "y": 1044,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484894239,
+      "label": "resumed",
+      "x": 2170.199951171875,
+      "y": 1041.5999755859375,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484895241,
+      "label": "resumed",
+      "x": 2163.89990234375,
+      "y": 1041,
+      "action": "cry",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484896243,
+      "label": "resumed",
+      "x": 2163.89990234375,
+      "y": 1041,
+      "action": "cry",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484897245,
+      "label": "resumed",
+      "x": 2163.89990234375,
+      "y": 1041,
+      "action": "cry",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792484898247,
+      "label": "resumed",
+      "x": 2152.199951171875,
+      "y": 1040,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    }
+  ],
+  "errors": []
+}

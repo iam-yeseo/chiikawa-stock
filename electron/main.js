@@ -26,6 +26,7 @@ if (!gotLock) app.quit();
 let settingsWindow, petWindow, tray, service, vault, updates;
 let credentialReady = false, quitting = false, suspended = false, preferredMode = 'demo';
 let selectedDisplay, configWrite = Promise.resolve(), lifecycle = Promise.resolve(), resumeMode = null;
+let companionRevision = 0;
 let petMousePress = null;
 const announcedUpdates = new Set();
 function queueLifecycle(operation) {
@@ -156,8 +157,17 @@ function installIPC() {
   ipcMain.handle('chii:config',async(event,patch)=>{
     requireSender(event);
     if(!patch || typeof patch!=='object' || Array.isArray(patch) || JSON.stringify(patch).length>100000)throw new Error('설정 내용을 확인해 주세요.');
+    const wasCompanion=service.config.companionMode;
+    // Do not queue cancellation behind an in-flight token/account request.
+    // updateConfig validates before mutating and invalidates that request's epoch.
     await service.updateConfig(patch);
+    if(wasCompanion!==service.config.companionMode)companionRevision++;
     await persistConfig(service.getPersistedConfig());
+    if(wasCompanion!==service.config.companionMode){
+      if(service.config.companionMode){resumeMode=null;showPet();}
+      else if(suspended)resumeMode=preferredMode==='offline'?null:preferredMode;
+      else if(preferredMode!=='offline')await queueLifecycle(()=>!service.config.companionMode&&!suspended ? service.start(preferredMode) : undefined);
+    }
     publish();return snapshot();
   });
   ipcMain.handle('chii:credentials',async(event,input)=>{
@@ -178,13 +188,17 @@ function installIPC() {
     });
   });
   ipcMain.handle('chii:connect',async event=>{
-    requireSender(event,true);return queueLifecycle(async()=>{
+    requireSender(event,true);const requestedRevision=companionRevision;return queueLifecycle(async()=>{
+    if(requestedRevision!==companionRevision)return snapshot();
     if(!credentialReady)throw new Error('먼저 본인의 API 키를 저장해 주세요.');
+    if(service.config.companionMode){await service.updateConfig({companionMode:false});await persistConfig(service.getPersistedConfig());}
     await rememberMode('live');await service.start('live');publish();return snapshot();
     });
   });
   ipcMain.handle('chii:demo',async event=>{
-    requireSender(event,true);return queueLifecycle(async()=>{
+    requireSender(event,true);const requestedRevision=companionRevision;return queueLifecycle(async()=>{
+    if(requestedRevision!==companionRevision)return snapshot();
+    if(service.config.companionMode){await service.updateConfig({companionMode:false});await persistConfig(service.getPersistedConfig());}
     await rememberMode('demo');await service.start('demo');publish();return snapshot();
     });
   });
@@ -255,8 +269,8 @@ if(gotLock)app.whenReady().then(async()=>{
     }
   });
   service.on('state',publish);
-  service.on('alert',alert=>broadcast('chii:motion',{action:alert.direction==='up'?'happy':'cry',alert}));
-  service.on('bulletin',bulletin=>broadcast('chii:bulletin',bulletin));
+  service.on('alert',alert=>{if(!service.config.companionMode)broadcast('chii:motion',{action:alert.direction==='up'?'happy':'cry',alert});});
+  service.on('bulletin',bulletin=>{if(!service.config.companionMode)broadcast('chii:bulletin',bulletin);});
   service.on('config',config=>{persistConfig(config).catch(()=>{});updateTray();});
   service.on('halt',()=>{
     const haltedEpoch=service.epoch;

@@ -21,9 +21,12 @@ button {font:inherit;color:inherit;cursor:pointer;}
 .speech[data-tone="up"] strong {color:#c76669;}
 .speech[data-tone="down"] strong {color:#61849c;}
 .speech[data-tone="down"] .speech-top>span {background:#e3f0f6;}
+.speech[data-content="companion"] #speech-body,.speech[data-content="companion"] #speech-meta {display:none;}
+.speech[data-content="companion"] .speech-top>span {background:#f7e9ec;}
 .pet-menu {position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:190px;padding:6px;border:1.5px solid #ad8b76;border-radius:15px;background:#fffef6;box-shadow:0 4px 16px #72513e16;pointer-events:auto;z-index:10;}
 .pet-menu button {display:flex;justify-content:space-between;align-items:center;width:100%;border:0;border-radius:9px;padding:11px 12px;text-align:left;background:transparent;font-size:12px;}
 .pet-menu button:hover {background:#fff4d7;}
+.pet-menu button:disabled {cursor:default;color:#a58e7e;background:transparent;}
 .pet-menu button span {color:#b89b85;}
 .speech[data-side="below"]:after {top:calc(-8px * var(--speech-scale));bottom:auto;transform:rotate(225deg);}
 .pet.speech-below .pet-menu {bottom:auto;top:calc(100% + 8px);}

@@ -17,7 +17,7 @@ test('0.1 settings migrate to Chiikawa without losing custom stocks or preferenc
   try {
     await fs.writeFile(path.join(directory, 'settings.json'), JSON.stringify(previous));
     const migrated = await readConfig(directory, defaultConfig, normalizeConfig);
-    assert.deepEqual(migrated, {...previous, characterId: 'chiikawa', speechScale: 100, autoWatchHoldings: true});
+    assert.deepEqual(migrated, {...previous, characterId: 'chiikawa', speechScale: 100, autoWatchHoldings: true, companionMode: false});
   } finally { await fs.rm(directory, {recursive: true, force: true}); }
 });
 
@@ -93,10 +93,10 @@ test('0.2.1 settings gain default speech scale and retain it after saving and re
     await fs.writeFile(path.join(directory, 'settings.json'), JSON.stringify(previous));
     await fs.writeFile(path.join(directory, 'credentials.enc'), credentialFixture);
     const migrated = await readConfig(directory, defaultConfig, normalizeConfig);
-    assert.deepEqual(migrated, {...previous, speechScale: 100, autoWatchHoldings: true});
+    assert.deepEqual(migrated, {...previous, speechScale: 100, autoWatchHoldings: true, companionMode: false});
     const saved = normalizeConfig({speechScale: 140}, migrated);
     await atomicWrite(path.join(directory, 'settings.json'), JSON.stringify(saved));
-    assert.deepEqual(await readConfig(directory, defaultConfig, normalizeConfig), {...previous, speechScale: 140, autoWatchHoldings: true});
+    assert.deepEqual(await readConfig(directory, defaultConfig, normalizeConfig), {...previous, speechScale: 140, autoWatchHoldings: true, companionMode: false});
     assert.deepEqual(await fs.readFile(path.join(directory, 'credentials.enc')), credentialFixture);
   } finally {await fs.rm(directory, {recursive: true, force: true});}
 });

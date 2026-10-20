@@ -1,7 +1,7 @@
 {
   "name": "chiikawa-stocks",
   "productName": "먼작주",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "먼작주 — 토스증권 시세를 알려주는 데스크톱 캐릭터",
   "private": true,
   "type": "module",
@@ -19,7 +19,8 @@
     "dist:dir": "npm run build && electron-builder --dir",
     "test:roaming": "node scripts/smoke-roaming.mjs",
     "test:portfolio": "node scripts/smoke-portfolio.mjs",
-    "test:characters": "node scripts/smoke-characters.mjs"
+    "test:characters": "node scripts/smoke-characters.mjs",
+    "test:companion": "node scripts/smoke-companion.mjs"
   },
   "dependencies": {
     "electron-updater": "6.8.9",
@@ -36,7 +37,7 @@
     "productName": "Meonjakju",
     "asar": true,
     "directories": {
-      "output": "release/0.5.0"
+      "output": "release/0.5.1"
     },
     "files": [
       "dist/**/*",

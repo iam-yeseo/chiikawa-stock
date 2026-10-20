@@ -1,3 +1,5 @@
+import {normalizeConfig} from '../lib/config.js';
+
 /** The browser preview intentionally never receives or saves real credentials. */
 export const isDesktop = Boolean(window.chii);
 
@@ -39,19 +41,20 @@ function createBrowserDemo() {
   const motionListeners = new Set();
   const bulletinListeners = new Set();
   const state = {
-    version: '0.5.0', mode: 'demo', credentialsConfigured: false,
+    version: '0.5.1', mode: 'demo', credentialsConfigured: false,
     connection: {state: 'connected', message: '브라우저 미리보기 · 모든 가격은 가상 시세입니다.', updatedAt: Date.now()},
-    config: {intervalMinutes: 5, baseline: 'previousClose', roaming: true, petSize: 150, speechScale: 100, characterId: 'chiikawa', autoWatchHoldings: true, watchlist: demoStocks.map(({market, symbol, name}) => ({market, symbol, name}))},
+    config: normalizeConfig({watchlist: demoStocks.map(({market, symbol, name}) => ({market, symbol, name}))}),
     quotes: [], alerts: [],
     portfolio: {status: 'ready', message: '가상 계좌의 주식 자산이에요. 실제 내 자산이 아니에요.', accounts: [{id: 1001, label: '가상계좌 •••• 0301'}, {id: 1002, label: '가상계좌 •••• 0302'}], selectedAccountId: 1001, holdings: demoHoldings(), updatedAt: Date.now(), stale: false, omittedWatchCount: 0},
   };
   const mergeHeldStocks = () => {
-    if (!state.config.autoWatchHoldings) return;
+    if (state.config.companionMode || !state.config.autoWatchHoldings) return;
     for (const holding of state.portfolio.holdings?.items || []) {
       if (holding.quantity > 0 && !state.config.watchlist.some((stock) => stock.market === holding.market && stock.symbol === holding.symbol)) state.config.watchlist.push({symbol: holding.symbol, name: holding.name, market: holding.market});
     }
   };
   const makeQuotes = () => {
+    if (state.config.companionMode) {state.quotes = []; return;}
     state.quotes = state.config.watchlist.map((stock) => {
       const fixture = demoStocks.find((item) => item.market === stock.market && item.symbol === stock.symbol);
       const price = fixture?.price ?? null;
@@ -65,10 +68,24 @@ function createBrowserDemo() {
   let bulletinTimer;
   function scheduleBulletin() {
     clearInterval(bulletinTimer);
+    if (state.config.companionMode) return;
     bulletinTimer = setInterval(() => bulletinListeners.forEach((fn) => fn({quotes: clone(state.quotes), at: Date.now()})), state.config.intervalMinutes * 60_000);
   }
+  const applyCompanionMode = () => {
+    if (state.config.companionMode) {
+      state.mode = 'offline';
+      state.connection = {state: 'idle', message: '산책 모드 · API 연결 없이 친구와 함께해요.', updatedAt: Date.now()};
+      state.portfolio = {status: 'idle', message: '산책 모드에서는 계좌 조회를 쉬고 있어요.', accounts: [], selectedAccountId: null, holdings: null, updatedAt: null, stale: false, omittedWatchCount: 0};
+    } else {
+      state.mode = 'demo';
+      state.connection = {state: 'connected', message: '브라우저 미리보기 · 모든 가격은 가상 시세입니다.', updatedAt: Date.now()};
+      state.portfolio = {status: 'ready', message: '가상 계좌의 주식 자산이에요. 실제 내 자산이 아니에요.', accounts: [{id: 1001, label: '가상계좌 •••• 0301'}, {id: 1002, label: '가상계좌 •••• 0302'}], selectedAccountId: 1001, holdings: demoHoldings(), updatedAt: Date.now(), stale: false, omittedWatchCount: 0};
+      mergeHeldStocks();
+    }
+    makeQuotes(); scheduleBulletin();
+  };
   scheduleBulletin();
-  const updateState = {status: 'disabled', mode: 'disabled', currentVersion: '0.5.0', latestVersion: null, message: '브라우저 미리보기에서는 업데이트를 사용할 수 없어요. 데스크톱 앱에서 확인해 주세요.', progress: null};
+  const updateState = {status: 'disabled', mode: 'disabled', currentVersion: '0.5.1', latestVersion: null, message: '브라우저 미리보기에서는 업데이트를 사용할 수 없어요. 데스크톱 앱에서 확인해 주세요.', progress: null};
   return {
     async getState() {return clone(state);},
     async getUpdateState() {return clone(updateState);},
@@ -79,7 +96,9 @@ function createBrowserDemo() {
     onState(fn) {listeners.add(fn); return () => listeners.delete(fn);},
     async updateConfig(patch) {
       const intervalChanged = patch.intervalMinutes !== undefined && patch.intervalMinutes !== state.config.intervalMinutes;
-      state.config = {...state.config, ...clone(patch)};
+      const previousCompanionMode = state.config.companionMode;
+      state.config = normalizeConfig(clone(patch), state.config);
+      if (previousCompanionMode !== state.config.companionMode) {applyCompanionMode(); return publish();}
       if (patch.watchlist !== undefined || patch.baseline !== undefined || patch.autoWatchHoldings !== undefined) {mergeHeldStocks(); makeQuotes();}
       if (intervalChanged) scheduleBulletin();
       return publish();
@@ -87,10 +106,12 @@ function createBrowserDemo() {
     async setCredentials() {throw new Error('API 키는 데스크톱 앱에서만 안전하게 저장할 수 있어요. 지금은 브라우저 미리보기입니다.');},
     async clearCredentials() {return publish();},
     async connect() {throw new Error('실시간 시세 연결은 Windows 또는 macOS 데스크톱 앱에서 이용해 주세요.');},
-    async demo() {state.mode = 'demo'; return publish();},
+    async demo() {state.config = normalizeConfig({companionMode: false}, state.config); applyCompanionMode(); return publish();},
     async refreshPortfolio() {
+      if (state.config.companionMode) throw new Error('산책 모드를 끄면 가상 계좌를 다시 살펴볼 수 있어요.');
       state.portfolio.status = 'loading'; publish();
       await new Promise((resolve) => setTimeout(resolve, 260));
+      if (state.config.companionMode) return clone(state);
       state.portfolio.holdings = demoHoldings(state.portfolio.selectedAccountId === 1002);
       state.portfolio.status = 'ready'; state.portfolio.updatedAt = Date.now(); state.portfolio.stale = false;
       mergeHeldStocks(); makeQuotes(); return publish();

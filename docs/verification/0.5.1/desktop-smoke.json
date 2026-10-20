@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "platform": "darwin",
+  "arch": "arm64",
+  "at": "2026-10-20T08:27:30.745Z",
+  "checks": [
+    "isolated settings and pet windows",
+    "20 demo quotes / clear demo label",
+    "native always-on-top and non-focusable overlay",
+    "market filters and stock search",
+    "speech scale draft preserved, applied to pet, persisted after restart",
+    "settings persistence after restart",
+    "happy and crying event rendering",
+    "transparent overlay",
+    "hide and restore",
+    "invalid credentials rejected",
+    "no renderer errors"
+  ],
+  "native": [
+    {
+      "url": "file:///Users/callam4/Desktop/%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%8B%E1%85%A8%E1%84%89%E1%85%A5/%E1%84%80%E1%85%A2%E1%84%8B%E1%85%B5%E1%86%AB%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%8B%E1%85%A5%E1%86%B8/%E1%84%8E%E1%85%B5%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A1%E1%84%8B%E1%85%AA%E1%84%83%E1%85%A9%20%E1%84%8C%E1%85%AE%E1%84%89%E1%85%B5%E1%86%A8%E1%84%8B%E1%85%B3%E1%86%AF%20%E1%84%92%E1%85%A2%E1%84%8B%E1%85%AD/dist/pet.html",
+      "alwaysOnTop": true,
+      "focusable": false,
+      "visible": true,
+      "transparent": "#000000"
+    },
+    {
+      "url": "file:///Users/callam4/Desktop/%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%8B%E1%85%A8%E1%84%89%E1%85%A5/%E1%84%80%E1%85%A2%E1%84%8B%E1%85%B5%E1%86%AB%20%E1%84%8C%E1%85%A1%E1%86%A8%E1%84%8B%E1%85%A5%E1%86%B8/%E1%84%8E%E1%85%B5%E1%84%8B%E1%85%B5%E1%84%8F%E1%85%A1%E1%84%8B%E1%85%AA%E1%84%83%E1%85%A9%20%E1%84%8C%E1%85%AE%E1%84%89%E1%85%B5%E1%86%A8%E1%84%8B%E1%85%B3%E1%86%AF%20%E1%84%92%E1%85%A2%E1%84%8B%E1%85%AD/dist/index.html",
+      "alwaysOnTop": false,
+      "focusable": true,
+      "visible": true,
+      "transparent": "#FFFDF3"
+    }
+  ],
+  "consoleErrors": []
+}

@@ -5,6 +5,7 @@ import {bridge, isDesktop} from './bridge.js';
 import {mountCharacter} from './character.js';
 import {CHARACTER_CATALOG, getCharacterProfile} from '../lib/characters.js';
 import {PET_SIZE} from '../lib/config.js';
+import {pickCompanionDialogue} from '../lib/companion-dialogue.js';
 
 const icons = {
   grid: '<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',
@@ -31,7 +32,7 @@ const baselineLabels = {previousClose: '전일 종가 대비', purchase: '내 �
 const actionLabels = {idle: '가만히', walk: '총총 걷기', happy: '기뻐하기', cry: '엉엉 울기', sleep: '잠깐 휴식', talk: '말하기'};
 const fallbackSpeech = {idle: '응…', happy: '와아…!', cry: '흐으…', walk: '으쌰…', sleep: '쿨…', talk: '아…!'};
 const activeProfile = () => getCharacterProfile(currentCharacterId);
-const speechFor = (action) => activeProfile().speech?.[action] || fallbackSpeech[action];
+const speechFor = (action) => snapshot?.config.companionMode === true ? pickCompanionDialogue(currentCharacterId, {action, random: () => 0}).text : activeProfile().speech?.[action] || fallbackSpeech[action];
 const characterPreviewLabels = {
   chiikawa: {walk: '조심조심 걷기', happy: '작게 폴짝', cry: '훌쩍 울기'},
   hachiware: {idle: '주변 구경', walk: '구경하며 걷기', happy: '두 번 폴짝', cry: '마음 추스르기'},
@@ -42,12 +43,12 @@ let snapshot, market = 'ALL', page = 'watchlist', selectedAction = 'idle', searc
 const settingsDirty = {notifications: false, character: false};
 const lastPrices = new Map();
 let currentCharacterId = 'chiikawa', characterSelectionBusy = false;
-let portfolioBusy = false, autoWatchBusy = false, lastPortfolioRender = '';
-let updateState = {status: 'idle', mode: 'disabled', currentVersion: '0.5.0', latestVersion: null, message: '', progress: null}, updateBusy = false;
+let portfolioBusy = false, autoWatchBusy = false, lastPortfolioRender = '', companionModeBusy = false;
+let updateState = {status: 'idle', mode: 'disabled', currentVersion: '0.5.1', latestVersion: null, message: '', progress: null}, updateBusy = false;
 document.documentElement.dataset.platform = /Mac/i.test(navigator.platform) ? 'mac' : 'windows';
 
 $('#app').innerHTML = `
-  <div class="app-titlebar"><span id="window-title">먼작주 0.5.0</span></div>
+  <div class="app-titlebar"><span id="window-title">먼작주 0.5.1</span></div>
   <div class="app-shell">
     <header class="shop-header">
       <div class="masthead">
@@ -111,6 +112,7 @@ $('#app').innerHTML = `
       </section>
 
       <section id="preferences-view" class="view" hidden>
+        <section class="panel companion-mode-panel" aria-labelledby="companion-mode-heading"><div class="companion-mode-copy"><span class="metric-icon coral" aria-hidden="true">${icon('heart')}</span><div><h2 id="companion-mode-heading"><label for="companion-mode-input">산책 모드</label><span id="companion-mode-status" class="companion-mode-status">꺼짐</span></h2><p id="companion-mode-help">주식을 하지 않아도 친구와 함께해요. API 연결 없이 화면을 돌아다니며, 각자의 말투로 랜덤 대사를 들려줘요.</p><p class="companion-mode-note">켜면 바로 시작하고 다음 실행에도 기억해요. 주식 시세와 등락 알림은 쉬어가고, 끄면 이전 모드로 돌아가요.</p></div></div><label class="switch"><input type="checkbox" id="companion-mode-input" aria-labelledby="companion-mode-heading" aria-describedby="companion-mode-help"><span></span></label></section>
         <section class="panel character-selection-panel" aria-labelledby="character-selection-heading"><div class="character-section-heading"><div><h2 id="character-selection-heading">어떤 친구와 함께할까요?</h2><p>마음에 드는 친구를 누르면 바로 바뀌어요. 산책과 기쁨, 속상한 표정도 저마다 달라요.</p></div></div><div id="character-choices" class="character-choices" role="radiogroup" aria-labelledby="character-selection-heading" aria-describedby="character-choice-help"></div><p id="character-choice-help" class="character-choice-help">선택한 친구는 바로 저장돼요. 방향키로 다른 친구를 선택할 수 있어요.</p></section>
         <div class="settings-grid">
           <section class="panel settings-panel"><div class="panel-heading"><div><h2>어떻게 알려줄까요?</h2></div><span class="metric-icon yellow">${icon('bell')}</span></div>
@@ -120,7 +122,7 @@ $('#app').innerHTML = `
             <button class="button button-dark" id="save-notifications">${icon('check')}알림 설정 저장</button>
           </section>
           <section class="panel settings-panel"><div class="panel-heading"><div><h2>캐릭터 설정</h2></div><span class="metric-icon coral">${icon('heart')}</span></div>
-            <div class="setting-toggle-row"><div><strong>자유롭게 돌아다니기</strong><p>화면 가장자리와 이곳저곳을 산책해요.</p></div><label class="switch"><input type="checkbox" id="roaming-input" checked aria-label="자유롭게 돌아다니기"><span></span></label></div>
+            <div class="setting-toggle-row"><div><strong>자유롭게 돌아다니기</strong><p id="roaming-help">화면 가장자리와 이곳저곳을 산책해요.</p></div><label class="switch"><input type="checkbox" id="roaming-input" checked aria-label="자유롭게 돌아다니기" aria-describedby="roaming-help"><span></span></label></div>
             <div class="range-title"><label class="field-label" for="pet-size-input">캐릭터 크기</label><output id="pet-size-value">${PET_SIZE.default} px</output></div><input type="range" id="pet-size-input" min="${PET_SIZE.min}" max="${PET_SIZE.max}" step="${PET_SIZE.step}" value="${PET_SIZE.default}"><div class="range-labels"><span>작게</span><span>크게</span></div>
             <div class="range-title speech-scale-heading"><label class="field-label" for="speech-scale-input">말풍선 크기</label><output id="speech-scale-value" for="speech-scale-input">100%</output></div><input type="range" id="speech-scale-input" min="80" max="160" step="10" value="100" aria-describedby="speech-scale-help"><div class="range-labels"><span>80%</span><span>160%</span></div><p class="field-help" id="speech-scale-help">글자와 말풍선 크기를 함께 조절해요.</p><div class="speech-scale-preview" aria-label="말풍선 크기 미리보기"><div class="speech-scale-sample" id="speech-scale-sample"><span>말풍선 미리보기</span><strong>아…!</strong><p>삼성전자 70,000원 · +5.00%</p></div></div>
             <div class="all-motions" role="group" aria-label="모든 모션 미리보기">${Object.entries(actionLabels).map(([action,label]) => `<button class="motion-button" data-preview-action="${action}">${label}</button>`).join('')}</div>
@@ -128,7 +130,7 @@ $('#app').innerHTML = `
           </section>
         </div>
         <section class="panel update-panel" aria-labelledby="update-heading">
-          <div class="update-heading"><div><h2 id="update-heading">앱 업데이트</h2><p>현재 버전 <strong id="update-current-version">0.5.0</strong><span id="update-latest-version"></span></p></div><span class="update-status-badge" id="update-status-badge">확인 대기</span></div>
+          <div class="update-heading"><div><h2 id="update-heading">앱 업데이트</h2><p>현재 버전 <strong id="update-current-version">0.5.1</strong><span id="update-latest-version"></span></p></div><span class="update-status-badge" id="update-status-badge">확인 대기</span></div>
           <p id="update-status" class="update-status" role="status" aria-live="polite">새 버전이 있는지 확인할 수 있어요.</p>
           <progress id="update-progress" max="100" value="0" aria-label="새 버전 다운로드 진행률" hidden></progress>
           <p class="update-help" id="update-help"></p>
@@ -228,7 +230,7 @@ function renderUpdate(next) {
   const messages = {idle: '새 버전이 있는지 확인할 수 있어요.', checking: '새 버전을 확인하고 있어요.', available: '새 버전을 사용할 수 있어요.', current: '최신 버전을 사용 중이에요.', downloading: '새 버전을 다운로드하고 있어요.', downloaded: '새 버전 다운로드가 끝났어요. 준비되면 재시작해 주세요.', error: '업데이트를 확인하지 못했어요. 잠시 후 다시 확인해 주세요.', disabled: '데스크톱 앱에서 업데이트를 확인할 수 있어요.'};
   const disabled = mode === 'disabled' || status === 'disabled';
   const busy = updateBusy || ['checking', 'downloading'].includes(status);
-  $('#update-current-version').textContent = currentVersion || snapshot?.version || '0.5.0';
+  $('#update-current-version').textContent = currentVersion || snapshot?.version || '0.5.1';
   $('#update-latest-version').textContent = latestVersion && latestVersion !== currentVersion ? ` · 새 버전 ${latestVersion}` : '';
   $('#update-status-badge').textContent = labels[status] || labels.idle;
   $('#update-status-badge').dataset.status = status;
@@ -341,7 +343,9 @@ function renderPortfolio() {
   $('.portfolio-watch-detail').textContent = `설정한 등락 기준의 ±5% 단계도 즉시 알려줘요. ${snapshot.config.autoWatchHoldings === false ? '자동 추가를 꺼도 이미 추가한 관심종목은 유지돼요.' : '보유 종목을 관심종목에서 빼려면 자동 추가를 먼저 꺼 주세요.'}`;
 }
 function render(next) {
+  const wasCompanionMode = snapshot?.config.companionMode === true;
   snapshot = next; const {config, connection} = next;
+  const companionMode = config.companionMode === true;
   const activeFriend = getCharacterProfile(config.characterId || 'chiikawa');
   $('#active-friend-name').textContent = activeFriend.name;
   $$('.character-choice').forEach((button) => {const selected = button.dataset.characterId === activeFriend.id; button.classList.toggle('selected', selected); button.setAttribute('aria-checked', String(selected)); button.tabIndex = selected ? 0 : -1; if (!button.disabled) $('.friend-status', button).textContent = selected ? '✓ 함께하는 중' : '선택하기';});
@@ -353,7 +357,16 @@ function render(next) {
   $('#friend-greeting').textContent = activeFriend.speech?.greeting || '안녕! 오늘도 반가워요.';
   $('#companion-title').textContent = activeFriend.name;
   $('.companion-card').dataset.character = activeFriend.id;
+  if (companionMode !== wasCompanionMode) {clearTimeout(reactionTimer); character.setAction(selectedAction); $('#preview-bubble').textContent = speechFor(selectedAction);}
+  $('.companion-mode-panel').classList.toggle('enabled', companionMode);
+  $('#companion-mode-input').checked = companionMode;
+  $('#companion-mode-input').disabled = companionModeBusy;
+  $('#companion-mode-status').textContent = companionModeBusy ? '저장 중' : companionMode ? '함께 산책 중' : '꺼짐';
+  $('#speech-scale-sample > span').textContent = companionMode ? activeFriend.name : '말풍선 미리보기';
   $('#speech-scale-sample > strong').textContent = speechFor('talk');
+  $('#speech-scale-sample > p').hidden = companionMode;
+  $('#roaming-help').textContent = companionMode ? '산책 모드를 끄면 이 설정을 다시 사용해요. 시스템의 모션 줄이기가 켜져 있으면 제자리에서 함께해요.' : '화면 가장자리와 이곳저곳을 산책해요.';
+  $('.quick-roaming p').textContent = companionMode ? '산책 모드에서 친구와 함께해요' : '다른 앱을 켜도 곁에 있어요';
   $$('[data-preview-action]').forEach((button) => {button.textContent = labelFor(button.dataset.previewAction);});
   const krCount = config.watchlist.filter((stock) => stock.market === 'KR').length; const usCount = config.watchlist.filter((stock) => stock.market === 'US').length;
   ['total-count', 'watchlist-count', 'nav-count'].forEach((id) => {$(`#${id}`).textContent = String(config.watchlist.length);});
@@ -363,20 +376,24 @@ function render(next) {
   $('#quick-roaming').checked = config.roaming;
   if (!settingsDirty.character) {$('#roaming-input').checked = config.roaming; $('#pet-size-input').value = config.petSize; $('#pet-size-value').textContent = `${config.petSize} px`; $('#speech-scale-input').value = config.speechScale ?? 100; showSpeechScale(config.speechScale ?? 100);}
   const connected = next.mode === 'live' && connection.state === 'connected'; const demo = next.mode === 'demo';
-  const connecting = connection.state === 'connecting'; const connectionLabel = connected ? '실시간 연결됨' : demo ? '데모 모드' : connecting ? '연결하는 중' : '연결을 확인해 주세요';
+  const connecting = connection.state === 'connecting'; const connectionLabel = companionMode ? '산책 모드' : connected ? '실시간 연결됨' : demo ? '데모 모드' : connecting ? '연결하는 중' : '연결을 확인해 주세요';
   $('#connection-label').textContent = connectionLabel; $('#connection-pill').classList.toggle('connected', connected); $('#sidebar-connection').classList.toggle('connected', connected);
-  $('#mode-banner').classList.toggle('live', connected); $('#mode-banner').classList.toggle('warning', !connected && !demo); $('.banner-label').textContent = demo ? 'DEMO' : connected ? 'LIVE' : 'STATUS';
-  $('#mode-message').textContent = demo ? '지금은 가상 시세로 둘러보는 중이에요. 내 API 키를 연결하면 실제 시세를 알려드려요.' : connected ? '내 API 키로 직접 연결했어요. 국내·미국, 시간외 거래까지 함께 지켜봐요.' : connection.message || 'API 키를 연결하면 실제 시세를 받아볼 수 있어요.';
-  $('#mode-banner .text-button').textContent = connected ? '연결 관리 →' : '연결하기 →';
-  $('#table-footnote').textContent = demo ? '가상 시세 · 투자 판단에 사용할 수 없어요' : connected ? '토스증권 Open API · 마지막 수신 시세' : '연결 대기 · 수신된 가격만 표시해요';
+  $('#connection-pill').classList.toggle('companion-active', companionMode);
+  $('#mode-banner').classList.toggle('companion-active', companionMode); $('#mode-banner').classList.toggle('live', connected && !companionMode); $('#mode-banner').classList.toggle('warning', !companionMode && !connected && !demo); $('#mode-banner .banner-label').textContent = companionMode ? '산책' : demo ? 'DEMO' : connected ? 'LIVE' : 'STATUS';
+  $('#mode-message').textContent = companionMode ? `${activeFriend.name}와 산책 중이에요. API 연결 없이 돌아다니며 랜덤 대사를 들려줘요. 주식 안내는 잠시 쉬어가요.` : demo ? '지금은 가상 시세로 둘러보는 중이에요. 내 API 키를 연결하면 실제 시세를 알려드려요.' : connected ? '내 API 키로 직접 연결했어요. 국내·미국, 시간외 거래까지 함께 지켜봐요.' : connection.message || 'API 키를 연결하면 실제 시세를 받아볼 수 있어요.';
+  $('#mode-banner .text-button').textContent = companionMode ? '산책 설정 →' : connected ? '연결 관리 →' : '연결하기 →';
+  $('#table-footnote').textContent = companionMode ? '산책 모드 · 주식 시세와 등락 알림을 쉬고 있어요' : demo ? '가상 시세 · 투자 판단에 사용할 수 없어요' : connected ? '토스증권 Open API · 마지막 수신 시세' : '연결 대기 · 수신된 가격만 표시해요';
   const latest = Math.max(0, ...next.quotes.map((quote) => quote.updatedAt || 0)); $('#quote-update-time').textContent = latest ? `${formatTime(latest)} 기준` : '시세 수신 대기';
   $('#saved-credentials').hidden = !next.credentialsConfigured;
-  const version = next.version || '0.5.0';
+  const version = next.version || '0.5.1';
   $('#window-title').textContent = `먼작주 ${version}`;
   document.title = `먼작주 ${version}`;
   $('#update-current-version').textContent = version;
   $('#secret-storage-note').textContent = isDesktop ? '키는 이 컴퓨터에서 운영체제 암호화를 사용해 보관해요. 앱에 포함하거나 별도 서버로 보내지 않아요.' : '브라우저 미리보기에서는 API 키를 입력하거나 저장하지 않아요. 실제 연결은 데스크톱 앱에서 이용해 주세요.';
   $('#api-submit').disabled = !isDesktop || apiBusy; $('#client-id').disabled = !isDesktop || apiBusy; $('#client-secret').disabled = !isDesktop || apiBusy;
+  $('#api-submit').innerHTML = `${icon('plug')}${companionMode ? '키 저장하고 주식 모드 연결하기' : '키 저장하고 연결하기'}`;
+  $('#connect-saved').textContent = companionMode ? '저장한 키로 주식 모드 연결' : '저장한 키로 연결';
+  $('#use-demo').textContent = companionMode ? '산책을 멈추고 가상 시세 둘러보기' : '가상 시세로 둘러보기';
   $('#search-footnote').textContent = demo ? '데모에서는 기본 관심종목 20개를 검색할 수 있어요.' : next.catalogStatus?.message || '토스증권 종목 목록에서 검색해요. 목록을 가져오려면 API 연결이 필요해요.';
   if ($('#search-dialog').open && next.catalogStatus?.state === 'loading') $('#search-status').textContent = `종목 목록을 처음 불러오고 있어요 (${next.catalogStatus.completed}/${next.catalogStatus.total} 거래소)`;
   renderRows(); renderPortfolio();
@@ -439,7 +456,10 @@ $('#auto-watch-holdings').addEventListener('change', async (event) => {
   finally {autoWatchBusy = false; renderPortfolio();}
 });
 $$('[data-market]').forEach((button) => {button.setAttribute('aria-pressed', String(button.classList.contains('selected'))); button.addEventListener('click', () => {market = button.dataset.market; $$('[data-market]').forEach((item) => {item.classList.toggle('selected', item === button); item.setAttribute('aria-pressed', String(item === button));}); renderRows();});});
-$$('[data-open-api]').forEach((button) => button.addEventListener('click', () => openDialog('#api-dialog')));
+$$('[data-open-api]').forEach((button) => button.addEventListener('click', () => {
+  if (snapshot?.config.companionMode && (button.id === 'connection-pill' || button.closest('#mode-banner'))) {setPage('preferences'); $('#companion-mode-input').focus({preventScroll: true});}
+  else openDialog('#api-dialog');
+}));
 $$('[data-close-dialog]').forEach((button) => button.addEventListener('click', () => button.closest('dialog').close()));
 $$('dialog').forEach((dialog) => {dialog.addEventListener('click', (event) => {if (event.target !== dialog) return; const rect = dialog.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();}); dialog.addEventListener('close', () => {if (dialog.id === 'api-dialog') {$('#client-id').value = ''; $('#client-secret').value = ''; $('#api-error').hidden = true;}});});
 $('#add-stock').addEventListener('click', () => {openDialog('#search-dialog'); $('#stock-search').value = ''; searchStocks(); $('#stock-search').focus();});
@@ -447,6 +467,12 @@ let searchTimer; $('#stock-search').addEventListener('input', () => {clearTimeou
 $$('[data-motion]').forEach((button) => button.addEventListener('click', () => preview(button.dataset.motion)));
 $$('[data-preview-action]').forEach((button) => button.addEventListener('click', () => {preview(button.dataset.previewAction); toast(`${labelFor(button.dataset.previewAction)} 모션을 보여줄게요.`);}));
 $('#quick-roaming').addEventListener('change', async (event) => {const result = await perform(() => bridge.updateConfig({roaming: event.target.checked})); if (!result) event.target.checked = snapshot.config.roaming;});
+$('#companion-mode-input').addEventListener('change', async (event) => {
+  if (companionModeBusy) return;
+  const enabled = event.target.checked; companionModeBusy = true; event.target.disabled = true; $('#companion-mode-status').textContent = '저장 중';
+  try {await perform(() => bridge.updateConfig({companionMode: enabled}), enabled ? '산책을 시작해요. 친구의 이야기를 들어보세요.' : '산책 모드를 끄고 이전 모드로 돌아왔어요.');}
+  finally {companionModeBusy = false; if (snapshot) render(snapshot);}
+});
 ['#interval-input', '#baseline-select'].forEach((selector) => {$(selector).addEventListener('input', () => {settingsDirty.notifications = true;}); $(selector).addEventListener('change', () => {settingsDirty.notifications = true;});});
 $('#roaming-input').addEventListener('change', () => {settingsDirty.character = true;});
 $('#pet-size-input').addEventListener('input', (event) => {settingsDirty.character = true; $('#pet-size-value').textContent = `${event.target.value} px`;});
@@ -479,6 +505,6 @@ $('.api-bottom a').addEventListener('click', (event) => {if (isDesktop && bridge
 bridge.onState(render);
 bridge.onUpdateState?.(renderUpdate);
 bridge.getUpdateState?.().then(renderUpdate).catch(() => renderUpdate({status: 'error', message: '업데이트 상태를 불러오지 못했어요. 다시 확인해 주세요.'}));
-bridge.onMotion((event) => {if (event.alert) {clearTimeout(reactionTimer); character.setAction(event.action, {restart: true}); $('#preview-bubble').textContent = `${speechFor(event.action)} ${event.alert.name} ${formatPercent(event.alert.percent)}`; reactionTimer = setTimeout(() => {character.setAction(selectedAction); $('#preview-bubble').textContent = speechFor(selectedAction);}, 6500);}});
+bridge.onMotion((event) => {if (event.alert && !snapshot?.config.companionMode) {clearTimeout(reactionTimer); character.setAction(event.action, {restart: true}); $('#preview-bubble').textContent = `${speechFor(event.action)} ${event.alert.name} ${formatPercent(event.alert.percent)}`; reactionTimer = setTimeout(() => {character.setAction(selectedAction); $('#preview-bubble').textContent = speechFor(selectedAction);}, 6500);}});
 bridge.getState().then(render).catch((error) => toast(messageOf(error), true));
 window.addEventListener('beforeunload', () => {clearTimeout(reactionTimer); character.destroy(); headerCharacter.destroy(); friendPreviews.forEach((preview) => preview.destroy());}, {once: true});
