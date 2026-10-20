@@ -1,0 +1,192 @@
+{
+  "version": "0.5.1",
+  "previousVersion": "0.5.0",
+  "startedAt": "2026-10-20T08:50:37.358Z",
+  "passed": true,
+  "checks": [
+    {
+      "name": "public latest stable version and exact nine uploaded assets",
+      "passed": true,
+      "count": 9
+    },
+    {
+      "name": "latest.yml public bytes and version",
+      "passed": true,
+      "sha256": "ec042a3ad62845cf94f4d66e4f21bd7e5a0a6f2d462a8adecb092d72dace1215",
+      "size": 351
+    },
+    {
+      "name": "latest-mac.yml public bytes and version",
+      "passed": true,
+      "sha256": "8734766725f7818cc77cef3e2273c09a042110393e080353849f068a7f28fe0e",
+      "size": 511
+    },
+    {
+      "name": "Mac update feed covers both architectures",
+      "passed": true,
+      "files": [
+        {
+          "url": "Meonjakju-0.5.1-mac-x64.zip",
+          "sha512": "LN3mFCJR7ha2Myr4j5LFH908Rq7M3IsN+EsldCitswDSjtasbAd/8kBMPQN/JWryIadvumCuWW4BGhCCuPZJXw==",
+          "size": 140126850
+        },
+        {
+          "url": "Meonjakju-0.5.1-mac-arm64.zip",
+          "sha512": "wiXrRcaUmymoflZiEjLpKHOlzI8dpTwprp1w1eqOdcpYRLrx6xGVqhek34pNB6F8HhAYgWZPG502rzMnXMmE9A==",
+          "size": 136318696
+        }
+      ]
+    },
+    {
+      "name": "Meonjakju-0.5.1-win-x64.exe",
+      "passed": true,
+      "size": 116784999,
+      "sha512": "n+orfoF9A3O0mNg0ZEn0csgkf7rqIvFgygwuWCHVkCY2pC0Jxz8DTbbZI1LqG8Kov3wgwzCOM73cVDJ+fS+u3w==",
+      "sha256": "d0125fc96f7684d29948ceb37144ef1ccf22f0be0e71ca7a316f74838ea15f71"
+    },
+    {
+      "name": "real Mac updater arm64 0.5.0",
+      "passed": true,
+      "state": {
+        "status": "available",
+        "mode": "manual",
+        "currentVersion": "0.5.0",
+        "latestVersion": "0.5.1",
+        "progress": 0,
+        "message": "0.5.1 업데이트가 있어요. 다운로드 후 앱을 교체해 주세요."
+      },
+      "opened": [
+        "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/Meonjakju-0.5.1-mac-arm64.zip"
+      ],
+      "installedOrOpenedBrowser": false
+    },
+    {
+      "name": "real Mac updater arm64 0.5.1",
+      "passed": true,
+      "state": {
+        "status": "current",
+        "mode": "manual",
+        "currentVersion": "0.5.1",
+        "latestVersion": null,
+        "progress": 0,
+        "message": "최신 버전을 사용하고 있어요."
+      },
+      "opened": [],
+      "installedOrOpenedBrowser": false
+    },
+    {
+      "name": "real Mac updater x64 0.5.0",
+      "passed": true,
+      "state": {
+        "status": "available",
+        "mode": "manual",
+        "currentVersion": "0.5.0",
+        "latestVersion": "0.5.1",
+        "progress": 0,
+        "message": "0.5.1 업데이트가 있어요. 다운로드 후 앱을 교체해 주세요."
+      },
+      "opened": [
+        "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/Meonjakju-0.5.1-mac-x64.zip"
+      ],
+      "installedOrOpenedBrowser": false
+    },
+    {
+      "name": "real Mac updater x64 0.5.1",
+      "passed": true,
+      "state": {
+        "status": "current",
+        "mode": "manual",
+        "currentVersion": "0.5.1",
+        "latestVersion": null,
+        "progress": 0,
+        "message": "최신 버전을 사용하고 있어요."
+      },
+      "opened": [],
+      "installedOrOpenedBrowser": false
+    }
+  ],
+  "downloads": [
+    {
+      "name": "latest.yml",
+      "path": "/Users/callam4/Desktop/임예서/개인 작업/치이카와도 주식을 해요/qa/release-0.5.1-downloads/latest.yml",
+      "size": 351,
+      "sha256": "ec042a3ad62845cf94f4d66e4f21bd7e5a0a6f2d462a8adecb092d72dace1215"
+    },
+    {
+      "name": "latest-mac.yml",
+      "path": "/Users/callam4/Desktop/임예서/개인 작업/치이카와도 주식을 해요/qa/release-0.5.1-downloads/latest-mac.yml",
+      "size": 511,
+      "sha256": "8734766725f7818cc77cef3e2273c09a042110393e080353849f068a7f28fe0e"
+    },
+    {
+      "name": "Meonjakju-0.5.1-win-x64.exe",
+      "path": "/Users/callam4/Desktop/임예서/개인 작업/치이카와도 주식을 해요/qa/release-0.5.1-downloads/Meonjakju-0.5.1-win-x64.exe",
+      "size": 116784999,
+      "sha512": "n+orfoF9A3O0mNg0ZEn0csgkf7rqIvFgygwuWCHVkCY2pC0Jxz8DTbbZI1LqG8Kov3wgwzCOM73cVDJ+fS+u3w==",
+      "sha256": "d0125fc96f7684d29948ceb37144ef1ccf22f0be0e71ca7a316f74838ea15f71"
+    }
+  ],
+  "release": {
+    "id": 418183023,
+    "tag": "v0.5.1",
+    "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/tag/v0.5.1",
+    "publishedAt": "2026-10-20T08:49:59Z",
+    "assets": [
+      {
+        "name": "latest-mac.yml",
+        "size": 511,
+        "digest": "sha256:8734766725f7818cc77cef3e2273c09a042110393e080353849f068a7f28fe0e",
+        "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/latest-mac.yml"
+      },
+      {
+        "name": "latest.yml",
+        "size": 351,
+        "digest": "sha256:ec042a3ad62845cf94f4d66e4f21bd7e5a0a6f2d462a8adecb092d72dace1215",
+        "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/latest.yml"
+      },
+      {
+        "name": "Meonjakju-0.5.1-mac-arm64.zip",
+        "size": 136318696,
+        "digest": "sha256:eb8759d7117b86041544fb1f6ddc79457f4021a040aeddba943a6fdab8186d49",
+        "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/Meonjakju-0.5.1-mac-arm64.zip"
+      },
+      {
+        "name": "Meonjakju-0.5.1-mac-arm64.zip.blockmap",
+        "size": 143570,
+        "digest": "sha256:1b17f5a91cdd38ea6dd4bcb3befc757e32a9046e2430823f2f871e9d695d2c5a",
+        "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/Meonjakju-0.5.1-mac-arm64.zip.blockmap"
+      },
+      {
+        "name": "Meonjakju-0.5.1-mac-x64.zip",
+        "size": 140126850,
+        "digest": "sha256:3162c8ba91631c88a74c05b6c7978cfd32290c469fd5662bb60714d904009865",
+        "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/Meonjakju-0.5.1-mac-x64.zip"
+      },
+      {
+        "name": "Meonjakju-0.5.1-mac-x64.zip.blockmap",
+        "size": 147363,
+        "digest": "sha256:efa4135206509aafd205593b222d7cd0133d0adcee67ffc97888613133738ca7",
+        "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/Meonjakju-0.5.1-mac-x64.zip.blockmap"
+      },
+      {
+        "name": "Meonjakju-0.5.1-win-x64.exe",
+        "size": 116784999,
+        "digest": "sha256:d0125fc96f7684d29948ceb37144ef1ccf22f0be0e71ca7a316f74838ea15f71",
+        "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/Meonjakju-0.5.1-win-x64.exe"
+      },
+      {
+        "name": "Meonjakju-0.5.1-win-x64.exe.blockmap",
+        "size": 123267,
+        "digest": "sha256:9b1df312eaaac94b62db855f8fbba8987ff9816db773b71829ba1042ffff5e5d",
+        "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/Meonjakju-0.5.1-win-x64.exe.blockmap"
+      },
+      {
+        "name": "Meonjakju-0.5.1-win-x64.zip",
+        "size": 159552531,
+        "digest": "sha256:d9aec75a97907c50914ecff92ada724dd91b2026b8a20fffd9b7b7f3dbb9f362",
+        "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.1/Meonjakju-0.5.1-win-x64.zip"
+      }
+    ]
+  },
+  "finishedAt": "2026-10-20T08:50:52.539Z"
+}

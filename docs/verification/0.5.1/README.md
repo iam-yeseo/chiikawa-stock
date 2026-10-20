@@ -11,3 +11,5 @@
 기본 실행·캐릭터·브랜드/업데이트 검사를 최종 Mac 패키지에서도 통과했다. `packaged-smoke.json`, `characters-0.5.1-packaged.json`, `brand-updates-0.5.1-packaged.json`에 결과를 보존한다.
 
 초기 Mac CI의 산책 검사에서 설정 클릭 전 정상 주식 말풍선까지 포함하던 관찰 구간 문제를 발견했다. 검사 수집에 실제 `companionMode` 상태를 기록하고, 활성 구간의 모든 주식 문구 차단을 그대로 검증하도록 보완했다. 모드 전환 전 안내도 진단용으로 보존하며 실패 직전 관찰 기록을 먼저 저장한다. 앱 런타임 코드는 이 검사 수정에서 변경하지 않았다.
+
+최종 CI는 Windows·Mac 전체 검증과 공개에 성공했다. `ci-final-0.5.1.json`, OS별 `companion-ci-*.json`, 공개 업데이트 조회 `release-0.5.1.json`, 전체9개 파일 다운로드 체크섬 `published-integrity-0.5.1.json`을 함께 보존한다.

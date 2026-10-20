@@ -6,6 +6,10 @@
 
 0.5.1은 0.5.0의 업데이트 경로를 사용한다. Windows는 사용자 선택형 다운로드/재시작 설치, Mac은 아키텍처별 ZIP 다운로드/수동 앱 교체다. Windows 실제 이전 설치판에서 새 버전 설치 완료와 Intel Mac 실기기 실행은 미확인이다.
 
+[최종 배포 CI](docs/verification/0.5.1/ci-final-0.5.1.json)는 Windows·Mac의 전체 단위/실행/패키지 검사와 공개를 모두 통과했다. 실제 각 OS의 산책 모드 검사는 [Windows 소스](docs/verification/0.5.1/companion-ci-windows.json)·[Windows 패키지](docs/verification/0.5.1/companion-ci-windows-packaged.json)·[Mac 소스](docs/verification/0.5.1/companion-ci-macos.json)·[Mac 패키지](docs/verification/0.5.1/companion-ci-macos-packaged.json)에 보존한다. 모두 활성 구간의 주식 말풍선과 렌더러 오류가 없었다.
+
+[0.5.1 정식 릴리스](https://github.com/iam-yeseo/chiikawa-stock/releases/tag/v0.5.1)를 공개했다. [공개 검증](docs/verification/0.5.1/release-0.5.1.json)에서 Windows EXE 전체와 업데이트 피드 SHA-512 일치, 실제 Mac arm64·x64의 0.5.0 → 0.5.1 새 버전 감지 및 정확한 ZIP 주소를 확인했다. 브라우저 열기와 설치는 기록 함수로 대체했다. [공개 파일 전체 대조](docs/verification/0.5.1/published-integrity-0.5.1.json)는 9개 파일을 로컬에 보존하고 GitHub SHA-256 및 각 피드의 파일 SHA-512를 확인했다.
+
 ---
 
 # 0.5.0 검증 기록

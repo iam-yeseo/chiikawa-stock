@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "at": "2026-10-20T08:52:04.782Z",
+  "release": "https://github.com/iam-yeseo/chiikawa-stock/releases/tag/v0.5.1",
+  "artifacts": [
+    {
+      "file": "latest-mac.yml",
+      "bytes": 511,
+      "sha256": "8734766725f7818cc77cef3e2273c09a042110393e080353849f068a7f28fe0e",
+      "sha512": "iVFPCEc/4POgf2GRyz0bEQmZX+1WI0njjnXzCGscvnfIPW7ID+gI4dSmqQOQz3OkDkjqrUFePjPT/MEaVCDiqA=="
+    },
+    {
+      "file": "latest.yml",
+      "bytes": 351,
+      "sha256": "ec042a3ad62845cf94f4d66e4f21bd7e5a0a6f2d462a8adecb092d72dace1215",
+      "sha512": "oiyoH32z4JhI7pg3VMLJnciQRdTXgDGlCmVGSMb36nL7yjiMx+eGC4UJC/khuiC8E4Ej+w69a6BXQnevCJ868w=="
+    },
+    {
+      "file": "Meonjakju-0.5.1-mac-arm64.zip",
+      "bytes": 136318696,
+      "sha256": "eb8759d7117b86041544fb1f6ddc79457f4021a040aeddba943a6fdab8186d49",
+      "sha512": "wiXrRcaUmymoflZiEjLpKHOlzI8dpTwprp1w1eqOdcpYRLrx6xGVqhek34pNB6F8HhAYgWZPG502rzMnXMmE9A=="
+    },
+    {
+      "file": "Meonjakju-0.5.1-mac-arm64.zip.blockmap",
+      "bytes": 143570,
+      "sha256": "1b17f5a91cdd38ea6dd4bcb3befc757e32a9046e2430823f2f871e9d695d2c5a",
+      "sha512": "WFEBDIAZOBIevzH0dqmIDNW6ZxVjPQFUWVNkOF4EelfAZeltJ2KsFU8Saiy6v2rTJlyaazFzDUw2ozOgR7IKaw=="
+    },
+    {
+      "file": "Meonjakju-0.5.1-mac-x64.zip",
+      "bytes": 140126850,
+      "sha256": "3162c8ba91631c88a74c05b6c7978cfd32290c469fd5662bb60714d904009865",
+      "sha512": "LN3mFCJR7ha2Myr4j5LFH908Rq7M3IsN+EsldCitswDSjtasbAd/8kBMPQN/JWryIadvumCuWW4BGhCCuPZJXw=="
+    },
+    {
+      "file": "Meonjakju-0.5.1-mac-x64.zip.blockmap",
+      "bytes": 147363,
+      "sha256": "efa4135206509aafd205593b222d7cd0133d0adcee67ffc97888613133738ca7",
+      "sha512": "/J0hZ06Xm5ue17URwYy4PPOWeytBWgSZuLkb6NZWPHfBvxVMAB34pVZ05fAdRZJMTed3qVsp5ujloXsig//KXg=="
+    },
+    {
+      "file": "Meonjakju-0.5.1-win-x64.exe",
+      "bytes": 116784999,
+      "sha256": "d0125fc96f7684d29948ceb37144ef1ccf22f0be0e71ca7a316f74838ea15f71",
+      "sha512": "n+orfoF9A3O0mNg0ZEn0csgkf7rqIvFgygwuWCHVkCY2pC0Jxz8DTbbZI1LqG8Kov3wgwzCOM73cVDJ+fS+u3w=="
+    },
+    {
+      "file": "Meonjakju-0.5.1-win-x64.exe.blockmap",
+      "bytes": 123267,
+      "sha256": "9b1df312eaaac94b62db855f8fbba8987ff9816db773b71829ba1042ffff5e5d",
+      "sha512": "L+KYVZo2rPX6757TC/q+n0zVA2R4KuxicwQnumeFfSyOc1KMJayf8g/uOnMvOC6bmdb6VL27D9J34irg/fGaoA=="
+    },
+    {
+      "file": "Meonjakju-0.5.1-win-x64.zip",
+      "bytes": 159552531,
+      "sha256": "d9aec75a97907c50914ecff92ada724dd91b2026b8a20fffd9b7b7f3dbb9f362",
+      "sha512": "e/5szuYX8MchNnKPLwk3IaZYS5IluhgLS/3B/e7ge59YM484UhG73p4Wgz4H+yjr+oVyjmxC+gYiRav3wIQqWA=="
+    }
+  ],
+  "verifiedAllGithubDigests": true,
+  "verifiedFeedFileDigests": true
+}
