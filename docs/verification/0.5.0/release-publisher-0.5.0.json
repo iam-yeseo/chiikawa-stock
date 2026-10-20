@@ -1,0 +1,34 @@
+{
+  "verifiedAt": "2026-10-20T05:45:38.851Z",
+  "scope": "Mocked gh and local artifact files; no remote mutation",
+  "results": [
+    {
+      "scenario": "normal",
+      "passed": true
+    },
+    {
+      "scenario": "draft-retry",
+      "passed": true
+    },
+    {
+      "scenario": "missing",
+      "passed": true
+    },
+    {
+      "scenario": "duplicate",
+      "passed": true
+    },
+    {
+      "scenario": "empty",
+      "passed": true
+    },
+    {
+      "scenario": "published",
+      "passed": true
+    },
+    {
+      "scenario": "invalid-tag",
+      "passed": true
+    }
+  ]
+}

@@ -49,9 +49,9 @@ jobs:
         with:
           name: Meonjakju-${{ matrix.name }}
           path: |
-            release/**/*.zip
-            release/**/*.exe
-            release/**/*.blockmap
+            release/**/Meonjakju-*.zip
+            release/**/Meonjakju-*.exe
+            release/**/Meonjakju-*.blockmap
             release/**/latest*.yml
           if-no-files-found: error
   publish:
@@ -73,6 +73,34 @@ jobs:
           RELEASE_TAG: ${{ github.ref_name }}
         shell: bash
         run: |
+          version="${RELEASE_TAG#v}"
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Expected a stable vX.Y.Z release tag."
+            exit 1
+          fi
+          expected=(
+            "Meonjakju-$version-mac-arm64.zip"
+            "Meonjakju-$version-mac-x64.zip"
+            "Meonjakju-$version-win-x64.exe"
+            "Meonjakju-$version-win-x64.zip"
+            "Meonjakju-$version-mac-arm64.zip.blockmap"
+            "Meonjakju-$version-mac-x64.zip.blockmap"
+            "Meonjakju-$version-win-x64.exe.blockmap"
+            latest.yml
+            latest-mac.yml
+          )
+          assets=()
+          for name in "${expected[@]}"; do
+            matches=()
+            while IFS= read -r -d '' file; do
+              matches+=("$file")
+            done < <(find release-assets -type f -name "$name" -print0)
+            if [ "${#matches[@]}" -ne 1 ] || [ ! -s "${matches[0]}" ]; then
+              echo "::error::Expected exactly one nonempty release file: $name"
+              exit 1
+            fi
+            assets+=("${matches[0]}")
+          done
           if release_draft=$(gh release view "$RELEASE_TAG" --json isDraft --jq '.isDraft'); then
             if [ "$release_draft" != "true" ]; then
               echo "::error::Release $RELEASE_TAG is already published. Bump the version instead of replacing public assets."
@@ -81,7 +109,5 @@ jobs:
           else
             gh release create "$RELEASE_TAG" --draft --title "먼작주 $RELEASE_TAG" --generate-notes
           fi
-          mapfile -d '' assets < <(find release-assets -type f \( -name '*.zip' -o -name '*.exe' -o -name '*.blockmap' -o -name 'latest*.yml' \) -print0)
-          test "${#assets[@]}" -gt 0
           gh release upload "$RELEASE_TAG" "${assets[@]}" --clobber
           gh release edit "$RELEASE_TAG" --draft=false --latest

@@ -2,7 +2,7 @@
 
 0.5.0부터 `iam-yeseo/chiikawa-stock`의 공개 GitHub Releases를 사용한다. GitHub 토큰이나 Toss API 키를 앱에 넣지 않는다.
 
-현재 0.5.0의 로컬 빌드와 패키지 검증은 완료했고 원격 CI·정식 릴리스 확인은 대기 중이다. 실제 배포 여부와 운영체제별 실행 결과는 [QA.md](../QA.md)를 기준으로 확인한다.
+0.5.0은 Windows·macOS 네이티브 CI를 통과하고 [정식 릴리스](https://github.com/iam-yeseo/chiikawa-stock/releases/tag/v0.5.0)와 업데이트 피드를 공개했다. 공개 Windows 설치 파일의 체크섬과 실제 Mac 새 버전 조회·다운로드 주소를 검증했다. 운영체제별 실행 결과와 실제 버전 간 설치 검증의 한계는 [QA.md](../QA.md)에 기록한다.
 
 ## 사용자 동작
 
@@ -28,7 +28,7 @@ npm run test:characters
 node scripts/smoke-brand-updates.mjs
 ```
 
-`vX.Y.Z` 태그를 push하면 `.github/workflows/build-desktop.yml`이 Windows와 macOS에서 검증하고 패키징한다. 두 작업이 성공한 뒤 ZIP/EXE/blockmap/`latest*.yml`을 릴리스에 함께 업로드하고 공개한다. 이미 공개된 같은 태그가 있으면 업로드 전에 중단하며, 미공개 draft만 재시도할 수 있다. 수동 workflow 실행은 검증용 아티팩트만 생성한다. 릴리스 파일은 코드 저장소에 커밋하지 않는다.
+`vX.Y.Z` 태그를 push하면 `.github/workflows/build-desktop.yml`이 Windows와 macOS에서 검증하고 패키징한다. 두 작업이 성공한 뒤 해당 버전의 배포 ZIP/EXE/blockmap/`latest*.yml` 9개를 릴리스에 함께 업로드하고 공개한다. 정확한 이름의 파일이 하나씩 존재하고 비어 있지 않은지 먼저 확인하며 내부 실행 파일은 게시하지 않는다. 이미 공개된 같은 태그가 있으면 업로드 전에 중단하며, 미공개 draft만 재시도할 수 있다. 수동 workflow 실행은 검증용 아티팩트만 생성한다. 릴리스 파일은 코드 저장소에 커밋하지 않는다.
 
 Windows 피드에는 `latest.yml`, 그 안의 정확한 EXE, SHA-512, blockmap이 필요하다. 공식 NSIS updater가 다운로드 무결성을 검사한다. 현재 Windows 인증서도 없어 Authenticode 검증은 구성하지 않았으며, OS 보안 기능을 끄거나 다운로드 체크섬 검증을 우회하지 않는다. 인증서를 도입할 때 `verifyUpdateCodeSignature`와 publisher 설정을 함께 갱신한다.
 
