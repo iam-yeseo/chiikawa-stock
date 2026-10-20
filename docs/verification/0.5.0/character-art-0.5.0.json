@@ -1,0 +1,99 @@
+{
+  "at": "2026-10-20T04:57:00.502Z",
+  "images": [
+    "qa/character-art-0.5.0-100ms.png",
+    "qa/character-art-0.5.0-400ms.png",
+    "qa/character-art-0.5.0-700ms.png",
+    "qa/character-art-0.5.0-1100ms.png",
+    "qa/character-art-0.5.0-1500ms.png",
+    "qa/character-art-0.5.0-2200ms.png",
+    "qa/character-art-0.5.0-3000ms.png"
+  ],
+  "errors": [],
+  "status": [
+    {
+      "character": "chiikawa",
+      "action": "idle",
+      "frame": "0",
+      "phase": "still",
+      "tears": "still"
+    },
+    {
+      "character": "chiikawa",
+      "action": "walk",
+      "frame": "7",
+      "phase": "small-steps",
+      "tears": "still"
+    },
+    {
+      "character": "chiikawa",
+      "action": "happy",
+      "frame": "10",
+      "phase": "small-hop",
+      "tears": "still"
+    },
+    {
+      "character": "chiikawa",
+      "action": "cry",
+      "frame": "15",
+      "phase": "quiet-sob",
+      "tears": "flowing"
+    },
+    {
+      "character": "hachiware",
+      "action": "idle",
+      "frame": "0",
+      "phase": "curious-look",
+      "tears": "still"
+    },
+    {
+      "character": "hachiware",
+      "action": "walk",
+      "frame": "6",
+      "phase": "curious-steps",
+      "tears": "still"
+    },
+    {
+      "character": "hachiware",
+      "action": "happy",
+      "frame": "11",
+      "phase": "friendly-wave",
+      "tears": "still"
+    },
+    {
+      "character": "hachiware",
+      "action": "cry",
+      "frame": "2",
+      "phase": "gather-courage",
+      "tears": "still"
+    },
+    {
+      "character": "usagi",
+      "action": "idle",
+      "frame": "0",
+      "phase": "steady-look",
+      "tears": "still"
+    },
+    {
+      "character": "usagi",
+      "action": "walk",
+      "frame": "4",
+      "phase": "quick-small-steps",
+      "tears": "still"
+    },
+    {
+      "character": "usagi",
+      "action": "happy",
+      "frame": "11",
+      "phase": "calm-settle",
+      "tears": "still"
+    },
+    {
+      "character": "usagi",
+      "action": "cry",
+      "frame": "15",
+      "phase": "calm-recover",
+      "tears": "still"
+    }
+  ]
+}

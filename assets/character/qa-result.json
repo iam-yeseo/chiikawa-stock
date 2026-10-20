@@ -1,0 +1,16 @@
+{
+  "checks": [
+    "transparent-background",
+    "demo-label",
+    "happy-frame-animation",
+    "cry-frames-and-tears",
+    "alphanumeric-KR-currency",
+    "drag",
+    "pause-roaming",
+    "error-speech-dedup",
+    "reconnect-speech",
+    "doubleclick-settings",
+    "resize-clamp"
+  ],
+  "errors": []
+}

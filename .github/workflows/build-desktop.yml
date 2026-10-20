@@ -1,0 +1,78 @@
+name: Desktop packages
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  package:
+    strategy:
+      matrix:
+        include:
+          - os: macos-latest
+            command: npm run dist:mac -- --publish never
+            name: macOS
+          - os: windows-latest
+            command: npm run dist:win -- --publish never
+            name: Windows
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm run test:desktop
+      - run: npm run test:roaming
+      - run: npm run test:portfolio
+      - run: npm run test:characters
+      - run: node scripts/smoke-brand-updates.mjs
+      - run: ${{ matrix.command }}
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      - run: node scripts/smoke-characters.mjs --packaged
+      - run: node scripts/smoke-brand-updates.mjs --packaged
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Meonjakju-${{ matrix.name }}
+          path: |
+            release/**/*.zip
+            release/**/*.exe
+            release/**/*.blockmap
+            release/**/latest*.yml
+          if-no-files-found: error
+  publish:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: Meonjakju-*
+          path: release-assets
+          merge-multiple: true
+      - name: Publish verified desktop packages and update feed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          if release_draft=$(gh release view "$RELEASE_TAG" --json isDraft --jq '.isDraft'); then
+            if [ "$release_draft" != "true" ]; then
+              echo "::error::Release $RELEASE_TAG is already published. Bump the version instead of replacing public assets."
+              exit 1
+            fi
+          else
+            gh release create "$RELEASE_TAG" --draft --title "먼작주 $RELEASE_TAG" --generate-notes
+          fi
+          mapfile -d '' assets < <(find release-assets -type f \( -name '*.zip' -o -name '*.exe' -o -name '*.blockmap' -o -name 'latest*.yml' \) -print0)
+          test "${#assets[@]}" -gt 0
+          gh release upload "$RELEASE_TAG" "${assets[@]}" --clobber
+          gh release edit "$RELEASE_TAG" --draft=false --latest

@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Tmoney RoundWind';
+  src: url('../char/TmoneyRoundWind/TmoneyRoundWindRegular.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tmoney RoundWind';
+  src: url('../char/TmoneyRoundWind/TmoneyRoundWindExtraBold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --app-font: 'Tmoney RoundWind', sans-serif;
+  font-family: var(--app-font);
+  font-synthesis: none;
+}
+
+button, input, select, textarea, output, option {
+  font-family: var(--app-font);
+}

@@ -1,0 +1,43 @@
+import { _electron as electron } from 'playwright';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+const manifest=JSON.parse(await fs.readFile('package.json','utf8'));
+const executablePath=path.resolve(manifest.build.directories.output,`${process.arch==='arm64'?'mac-arm64':'mac'}/${manifest.build.executableName || manifest.productName}.app/Contents/MacOS/${manifest.build.executableName || manifest.productName}`);
+await fs.mkdir('qa',{recursive:true});
+const profile=await fs.mkdtemp(path.resolve('qa/packaged-profile-'));
+const env={...process.env,CHII_USER_DATA:profile};delete env.ELECTRON_RUN_AS_NODE;
+const expectedVersion=manifest.version;
+let app;
+try {
+  app=await electron.launch({executablePath,args:['--demo-preview'],env,timeout:45000});
+  const deadline=Date.now()+30000;
+  while(app.windows().length<2&&Date.now()<deadline)await new Promise(resolve=>setTimeout(resolve,100));
+  const dashboard=app.windows().find(page=>page.url().includes('index.html'));
+  const pet=app.windows().find(page=>page.url().includes('pet.html'));
+  assert.ok(dashboard&&pet,'packaged settings and pet opened');
+  await dashboard.waitForFunction(()=>Boolean(document.querySelector('#stock-rows tr')));
+  const info=await app.evaluate(({app,BrowserWindow})=>({packaged:app.isPackaged,version:app.getVersion(),profile:app.getPath('userData'),windows:BrowserWindow.getAllWindows().map(window=>({url:window.webContents.getURL(),top:window.isAlwaysOnTop()}))}));
+  assert.equal(info.packaged,true);assert.equal(info.version,expectedVersion);assert.equal(info.profile,profile);
+  assert.ok(info.windows.every(window=>window.url.includes('app.asar')));
+  const state=await dashboard.evaluate(()=>window.chii.getState());
+  assert.equal(state.mode,'demo');assert.equal(state.quotes.length,20);assert.equal(state.credentialsConfigured,false);
+  assert.equal(state.config.characterId,'chiikawa');
+  assert.equal(state.config.speechScale,100);
+  const failures=[];for(const page of [dashboard,pet])page.on('pageerror',error=>failures.push(error.message));
+  await dashboard.locator('[data-motion="cry"]').click();
+  await pet.waitForFunction(()=>document.querySelector('[data-character]')?.dataset.action==='cry');
+  await dashboard.evaluate(()=>window.chii.updateConfig({speechScale:160}));
+  await pet.waitForFunction(()=>document.querySelector('#speech').style.getPropertyValue('--speech-scale')==='1.6');
+  const bubble=await pet.evaluate(()=>{
+    const speech=document.querySelector('#speech'),r=speech.getBoundingClientRect();
+    return {width:r.width,left:r.left,top:r.top,right:r.right,bottom:r.bottom,viewport:{width:innerWidth,height:innerHeight},font:parseFloat(getComputedStyle(speech.querySelector('strong')).fontSize)};
+  });
+  assert.ok(Math.abs(bubble.width-390.4)<1);assert.equal(bubble.font,24);
+  assert.ok(bubble.left>=11&&bubble.top>=11&&bubble.right<=bubble.viewport.width-11&&bubble.bottom<=bubble.viewport.height-11);
+  await dashboard.screenshot({path:'qa/packaged-dashboard.png'});
+  await dashboard.locator('[data-motion="idle"]').click();
+  assert.deepEqual(failures,[]);
+  await fs.writeFile('qa/packaged-smoke.json',JSON.stringify({passed:true,platform:process.platform,arch:process.arch,...info,speechScale160:bubble,rendererErrors:failures},null,2));
+  console.log('Packaged macOS arm64 app launched successfully with demo quotes and crying animation.');
+}finally{if(app)await app.close();await fs.rm(profile,{recursive:true,force:true,maxRetries:5,retryDelay:200});}

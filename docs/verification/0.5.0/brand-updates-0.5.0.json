@@ -1,0 +1,99 @@
+{
+  "passed": true,
+  "version": "0.5.0",
+  "packaged": false,
+  "platform": "darwin",
+  "arch": "arm64",
+  "mode": "isolated demo; no live account or update downloads",
+  "checks": [
+    "stable internal identity and isolated credentials",
+    "exactly two native windows",
+    "먼작주 native title and visible version",
+    "40px themed draggable titlebar",
+    "generated logo and both bundled font weights",
+    "history tab and decorative slogans removed",
+    "readable investment disclaimer",
+    "entrance animation completed before final screenshots",
+    "update IPC available in settings and rejected from pet",
+    "isolated demo cannot download or install updates",
+    "manual update notice, download-only UI and header navigation",
+    "automatic update progress and explicit install UI via synthetic events"
+  ],
+  "errors": [],
+  "native": {
+    "internalName": "Chiikawa Stocks",
+    "profile": "<temporary-profile>",
+    "version": "0.5.0",
+    "windows": [
+      {
+        "title": "먼작주 · 치이카와",
+        "url": "<workspace>/dist/pet.html",
+        "focusable": false,
+        "alwaysOnTop": true
+      },
+      {
+        "title": "먼작주 0.5.0",
+        "url": "<workspace>/dist/index.html",
+        "focusable": true,
+        "alwaysOnTop": false
+      }
+    ]
+  },
+  "visual": {
+    "titlebarHeight": 40,
+    "titlebarColor": "rgb(248, 220, 227)",
+    "dragRegion": "drag",
+    "logoLoaded": true,
+    "logoAlt": "먼작주",
+    "fonts": [
+      {
+        "selector": "body",
+        "family": "\"Tmoney RoundWind\", sans-serif"
+      },
+      {
+        "selector": ".price-cell",
+        "family": "\"Tmoney RoundWind\", sans-serif"
+      },
+      {
+        "selector": ".nav-button",
+        "family": "\"Tmoney RoundWind\", sans-serif"
+      },
+      {
+        "selector": "#interval-input",
+        "family": "\"Tmoney RoundWind\", sans-serif"
+      },
+      {
+        "selector": "#baseline-select",
+        "family": "\"Tmoney RoundWind\", sans-serif"
+      },
+      {
+        "selector": ".page-footer",
+        "family": "\"Tmoney RoundWind\", sans-serif"
+      }
+    ],
+    "loadedFonts": [
+      {
+        "weight": "400",
+        "status": "loaded"
+      },
+      {
+        "weight": "700",
+        "status": "loaded"
+      }
+    ],
+    "forbiddenCopy": [],
+    "overflow": false,
+    "disclaimer": "본 앱은 투자 권유나 투자 자문을 제공하지 않습니다. 시세는 지연되거나 오류가 있을 수 있으며, 투자 판단과 결과에 대한 책임은 이용자 본인에게 있습니다.",
+    "viewOpacity": "1"
+  },
+  "petFont": "\"Tmoney RoundWind\", sans-serif",
+  "update": {
+    "status": "disabled",
+    "mode": "disabled",
+    "currentVersion": "0.5.0",
+    "latestVersion": null,
+    "progress": 0,
+    "message": "설치된 앱에서 업데이트를 확인할 수 있어요."
+  },
+  "profileCleaned": true
+}

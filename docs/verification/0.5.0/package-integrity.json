@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-20T05:11:50.961Z",
+  "packages": [
+    {
+      "archive": "release/0.5.0/mac-arm64/Meonjakju.app/Contents/Resources/app.asar",
+      "version": "0.5.0",
+      "verifiedFiles": 30,
+      "sourceMatch": true
+    },
+    {
+      "archive": "release/0.5.0/mac/Meonjakju.app/Contents/Resources/app.asar",
+      "version": "0.5.0",
+      "verifiedFiles": 30,
+      "sourceMatch": true
+    },
+    {
+      "archive": "release/0.5.0/win-unpacked/resources/app.asar",
+      "version": "0.5.0",
+      "verifiedFiles": 30,
+      "sourceMatch": true
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "Meonjakju-0.5.0-mac-arm64.zip",
+      "bytes": 136311807,
+      "sha256": "6b724ceb0297e1913b69d84bcd21b50524099bcb510f7bdebe043afee9b5400a"
+    },
+    {
+      "file": "Meonjakju-0.5.0-mac-x64.zip",
+      "bytes": 140119961,
+      "sha256": "204d48029c9962a46f01d606054912eae4b475b346a511fe27788009e4efc8cf"
+    },
+    {
+      "file": "Meonjakju-0.5.0-win-x64.exe",
+      "bytes": 116777146,
+      "sha256": "d11c297a1c1d22988f2b4db7e1f94a49514f2ee8e9438188af8ebc7b29eee226"
+    },
+    {
+      "file": "Meonjakju-0.5.0-win-x64.zip",
+      "bytes": 159545213,
+      "sha256": "04abf93065c2f67be41aa33fe8894fe23a42cd1bfc9d57e0d8dc9e5776e3a130"
+    }
+  ]
+}

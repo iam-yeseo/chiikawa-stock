@@ -1,0 +1,348 @@
+{
+  "passed": true,
+  "characterId": "chiikawa",
+  "version": "0.5.0",
+  "packaged": false,
+  "platform": "darwin",
+  "arch": "arm64",
+  "mode": "isolated demo with real wall-clock frames",
+  "movedWithSpeech": true,
+  "firstMovementMs": 3011,
+  "maxDisplacement": 285.4443820931798,
+  "samples": [
+    {
+      "at": 1792472330939,
+      "label": "initial",
+      "x": 2348,
+      "y": 1191,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472332446,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2348,
+      "y": 1191,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472333950,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2337.300048828125,
+      "y": 1169.0999755859375,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472335453,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2326.10009765625,
+      "y": 1146.199951171875,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472336954,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2326.10009765625,
+      "y": 1146.199951171875,
+      "action": "happy",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472338456,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2323.699951171875,
+      "y": 1141.0999755859375,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472339969,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2305,
+      "y": 1103,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472341472,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2293.699951171875,
+      "y": 1079.9000244140625,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472342974,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2288,
+      "y": 1068.0999755859375,
+      "action": "happy",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472344476,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2288,
+      "y": 1068.0999755859375,
+      "action": "happy",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472345978,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2288,
+      "y": 1068.0999755859375,
+      "action": "cry",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472347481,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2288,
+      "y": 1068.0999755859375,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472348984,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2288,
+      "y": 1068.0999755859375,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472350486,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2269.89990234375,
+      "y": 1058.800048828125,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472351988,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2233.60009765625,
+      "y": 1040.199951171875,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472353490,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2217.89990234375,
+      "y": 1032.0999755859375,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472354992,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2180.800048828125,
+      "y": 1013,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472356494,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2175.699951171875,
+      "y": 1010.4000244140625,
+      "action": "happy",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472357997,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2175.699951171875,
+      "y": 1010.4000244140625,
+      "action": "happy",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472359500,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2152.800048828125,
+      "y": 998.7000122070312,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472361011,
+      "label": "roaming-with-bulletins-and-alerts",
+      "x": 2142.199951171875,
+      "y": 993.2000122070312,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472361034,
+      "label": "roaming-disabled",
+      "x": 2142.199951171875,
+      "y": 993.2000122070312,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472362537,
+      "label": "disabled",
+      "x": 2142.199951171875,
+      "y": 993.2000122070312,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472364039,
+      "label": "disabled",
+      "x": 2142.199951171875,
+      "y": 993.2000122070312,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472365541,
+      "label": "disabled",
+      "x": 2142.199951171875,
+      "y": 993.2000122070312,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472366553,
+      "label": "resumed",
+      "x": 2142.199951171875,
+      "y": 993.2000122070312,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472367555,
+      "label": "resumed",
+      "x": 2142.199951171875,
+      "y": 993.2000122070312,
+      "action": "talk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472368556,
+      "label": "resumed",
+      "x": 2134,
+      "y": 980,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472369559,
+      "label": "resumed",
+      "x": 2118.89990234375,
+      "y": 955.9000244140625,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472370561,
+      "label": "resumed",
+      "x": 2105.199951171875,
+      "y": 934,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472371564,
+      "label": "resumed",
+      "x": 2104.300048828125,
+      "y": 932.5,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472372570,
+      "label": "resumed",
+      "x": 2163.300048828125,
+      "y": 924.5,
+      "action": "cry",
+      "speech": true,
+      "dragging": true
+    },
+    {
+      "at": 1792472373573,
+      "label": "resumed",
+      "x": 957.7999877929688,
+      "y": 647.5,
+      "action": "cry",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472374575,
+      "label": "resumed",
+      "x": 957.7999877929688,
+      "y": 647.5,
+      "action": "cry",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472375578,
+      "label": "resumed",
+      "x": 950.7999877929688,
+      "y": 641.5999755859375,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472376580,
+      "label": "resumed",
+      "x": 929.4000244140625,
+      "y": 623.4000244140625,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    },
+    {
+      "at": 1792472377582,
+      "label": "resumed",
+      "x": 909.5,
+      "y": 606.4000244140625,
+      "action": "walk",
+      "speech": true,
+      "dragging": false
+    }
+  ],
+  "errors": []
+}

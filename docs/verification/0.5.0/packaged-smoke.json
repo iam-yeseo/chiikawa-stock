@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "platform": "darwin",
+  "arch": "arm64",
+  "packaged": true,
+  "version": "0.5.0",
+  "profile": "<temporary-profile>",
+  "windows": [
+    {
+      "url": "<workspace>/release/0.5.0/mac-arm64/Meonjakju.app/Contents/Resources/app.asar/dist/pet.html",
+      "top": true
+    },
+    {
+      "url": "<workspace>/release/0.5.0/mac-arm64/Meonjakju.app/Contents/Resources/app.asar/dist/index.html",
+      "top": false
+    }
+  ],
+  "speechScale160": {
+    "width": 390.390625,
+    "left": 2158,
+    "top": 1028.40625,
+    "right": 2548.390625,
+    "bottom": 1165.765625,
+    "viewport": {
+      "width": 2560,
+      "height": 1353
+    },
+    "font": 24
+  },
+  "rendererErrors": []
+}

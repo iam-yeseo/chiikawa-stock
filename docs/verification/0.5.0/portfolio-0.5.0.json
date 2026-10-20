@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "version": "0.5.0",
+  "packaged": false,
+  "platform": "darwin",
+  "arch": "arm64",
+  "mode": "isolated synthetic account data",
+  "checks": [
+    "masked account selection and empty account",
+    "separate KRW/USD valuations",
+    "holdings auto-watch setting",
+    "manual refresh",
+    "invalid and unauthorized IPC rejected",
+    "configured six-second periodic report includes owned quotes first",
+    "pet bulletin display",
+    "no renderer errors"
+  ],
+  "errors": []
+}

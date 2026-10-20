@@ -1,0 +1,15 @@
+.chii-character{position:relative;flex:none;isolation:isolate;user-select:none;-webkit-user-select:none;overflow:visible;}
+.chii-body{position:absolute;inset:0;transform-origin:50% 94%;will-change:transform;}
+.chii-art{width:100%;height:100%;display:block;pointer-events:none;}
+.chii-shadow{position:absolute;left:50%;bottom:3%;width:57%;height:5%;border-radius:50%;background:radial-gradient(ellipse,rgba(84,57,43,.14),rgba(84,57,43,.04) 55%,transparent 72%);}
+.chii-tears{position:absolute;inset:0;pointer-events:none;display:none;}
+.chii-character[data-tears="flowing"] .chii-tears{display:block;}
+.chii-tears i{position:absolute;top:var(--chii-tear-top,43%);left:var(--chii-tear-left,33%);width:2%;height:3.8%;border:.75px solid rgba(92,131,145,.55);border-radius:50% 50% 55% 55%;background:rgba(232,248,251,.86);opacity:0;animation:chii-tear-fall 1550ms cubic-bezier(.35,0,.85,.75) infinite;}
+.chii-tears i:nth-child(even){left:var(--chii-tear-right,66%);animation-delay:180ms;}
+.chii-tears i:nth-child(3){animation-delay:790ms;}
+.chii-tears i:nth-child(4){animation-delay:970ms;}
+.chii-character[data-character="hachiware"] .chii-tears i{width:1.7%;height:3%;animation-duration:1150ms;}
+.chii-character[data-character="hachiware"] .chii-tears i:nth-child(n+3){display:none;}
+.chii-character[data-character="usagi"] .chii-tears{display:none;}
+@keyframes chii-tear-fall{0%{opacity:0;translate:0 0;}12%{opacity:.72;}76%{opacity:.72;}100%{opacity:0;translate:0 var(--chii-tear-fall,41px);}}
+@media(prefers-reduced-motion:reduce){.chii-tears{display:none!important;}.chii-body{transform:none!important;}}

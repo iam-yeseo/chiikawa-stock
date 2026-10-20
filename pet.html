@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+  <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>먼작주 · 주식 친구</title></head>
+  <body>
+    <main id="pet-world" aria-label="먼작주 주식 친구">
+      <div id="pet" class="pet" data-pet>
+        <section id="speech" class="speech" aria-live="polite" hidden data-interactive>
+          <div class="speech-content">
+          <div class="speech-top"><span id="speech-kind">주식 친구</span><button id="dismiss-speech" aria-label="말풍선 닫기">×</button></div>
+          <strong id="speech-title"></strong><p id="speech-body"></p><small id="speech-meta"></small>
+          </div>
+        </section>
+        <div id="pet-character" class="pet-hitbox" data-interactive role="button" tabindex="0" aria-label="치이카와. 드래그로 이동, 두 번 클릭하면 설정, 오른쪽 클릭하면 메뉴."></div>
+        <div id="pet-menu" class="pet-menu" data-interactive hidden>
+          <button id="settings">설정 열기 <span>↗</span></button>
+          <button id="toggle-roaming">잠깐 쉬기 <span>Ⅱ</span></button>
+          <button id="hide-pet">치이카와 숨기기 <span>−</span></button>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/src/pet.js"></script>
+  </body>
+</html>
