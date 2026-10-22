@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "platform": "win32",
+  "arch": "x64",
+  "at": "2026-10-22T06:37:53.284Z",
+  "checks": [
+    "isolated settings and pet windows",
+    "20 demo quotes / clear demo label",
+    "native always-on-top and non-focusable overlay",
+    "market filters and stock search",
+    "speech scale draft preserved, applied to pet, persisted after restart",
+    "settings persistence after restart",
+    "happy and crying event rendering",
+    "transparent overlay",
+    "hide and restore",
+    "invalid credentials rejected",
+    "no renderer errors"
+  ],
+  "native": [
+    {
+      "url": "file:///<ci-project>/dist/pet.html",
+      "alwaysOnTop": true,
+      "focusable": false,
+      "visible": true,
+      "transparent": "#000000"
+    },
+    {
+      "url": "file:///<ci-project>/dist/index.html",
+      "alwaysOnTop": false,
+      "focusable": true,
+      "visible": true,
+      "transparent": "#FFFDF3"
+    }
+  ],
+  "consoleErrors": []
+}

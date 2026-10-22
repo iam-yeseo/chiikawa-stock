@@ -1,0 +1,34 @@
+{
+  "version": "0.5.2",
+  "expectedArch": "x64",
+  "passed": true,
+  "isolatedDemo": true,
+  "gatekeeperApprovalTest": "separate native LaunchServices test; this smoke does not establish first-launch approval",
+  "errors": [],
+  "native": {
+    "version": "0.5.2",
+    "arch": "x64",
+    "appPath": "<downloaded app>/Contents/Resources/app.asar",
+    "profile": "<isolated demo profile>",
+    "packaged": true,
+    "windows": [
+      {
+        "visible": true,
+        "page": "pet.html"
+      },
+      {
+        "visible": true,
+        "page": "index.html"
+      }
+    ]
+  },
+  "state": {
+    "version": "0.5.2",
+    "mode": "demo",
+    "credentialsConfigured": false
+  },
+  "companion": {
+    "name": "하치와레",
+    "line": "있잖아, 그냥 같이 있어도 좋네!"
+  }
+}

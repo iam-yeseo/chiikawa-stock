@@ -1,0 +1,48 @@
+{
+  "version": "0.5.2",
+  "at": "2026-10-22T06:41:28.594Z",
+  "passed": true,
+  "signing": "ad-hoc",
+  "notarized": false,
+  "firstLaunchApprovalRequired": true,
+  "archives": [
+    {
+      "filename": "Meonjakju-0.5.2-mac-arm64.zip",
+      "bytes": 135094532,
+      "sha256": "bf642b12b9bd33ed75eb97705cdfd4b6d38e7ad587dc5b70c59d0e3b67c165cb",
+      "version": "0.5.2",
+      "binaryArch": "arm64",
+      "signatureVerified": true,
+      "sealedResources": true,
+      "entitlements": {
+        "com.apple.security.cs.allow-jit": true,
+        "com.apple.security.cs.disable-library-validation": true
+      },
+      "gatekeeper": {
+        "exitCode": 3,
+        "accepted": false,
+        "expectedUnnotarizedRejection": true,
+        "output": "<temporary>/arm64/Meonjakju.app: rejected"
+      }
+    },
+    {
+      "filename": "Meonjakju-0.5.2-mac-x64.zip",
+      "bytes": 141940375,
+      "sha256": "bc594e40d9e1b79b593cda0cf21b7868aba236be85068040d8f34b890e874bd6",
+      "version": "0.5.2",
+      "binaryArch": "x86_64",
+      "signatureVerified": true,
+      "sealedResources": true,
+      "entitlements": {
+        "com.apple.security.cs.allow-jit": true,
+        "com.apple.security.cs.disable-library-validation": true
+      },
+      "gatekeeper": {
+        "exitCode": 3,
+        "accepted": false,
+        "expectedUnnotarizedRejection": true,
+        "output": "<temporary>/x64/Meonjakju.app: rejected"
+      }
+    }
+  ]
+}

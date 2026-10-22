@@ -1,0 +1,67 @@
+{
+  "version": "0.5.2",
+  "releaseURL": "https://github.com/iam-yeseo/chiikawa-stock/releases/tag/v0.5.2",
+  "passed": true,
+  "files": [
+    {
+      "name": "latest-mac.yml",
+      "bytes": 511,
+      "sha256": "584e8688463dcca3f6d8e4a6626071f7d348a606e35f96430d01a291f8b99595",
+      "githubDigestMatched": true
+    },
+    {
+      "name": "latest.yml",
+      "bytes": 351,
+      "sha256": "ab8841257200d05f1e9de320706551e7d770926424a2dca77f8d3f7fcffea3e4",
+      "githubDigestMatched": true
+    },
+    {
+      "name": "Meonjakju-0.5.2-mac-arm64.zip",
+      "bytes": 135094532,
+      "sha256": "bf642b12b9bd33ed75eb97705cdfd4b6d38e7ad587dc5b70c59d0e3b67c165cb",
+      "githubDigestMatched": true
+    },
+    {
+      "name": "Meonjakju-0.5.2-mac-arm64.zip.blockmap",
+      "bytes": 141418,
+      "sha256": "937f6fca9c53876f34ae6188d06ab6749ab85da5af516d7a1a4cc85e9069f254",
+      "githubDigestMatched": true
+    },
+    {
+      "name": "Meonjakju-0.5.2-Mac-Guide.txt",
+      "bytes": 1869,
+      "sha256": "cb0fc455e7b734c7321d00e3ee336b2c20281b82555f4e0dfd6873faeb6aa0fe",
+      "githubDigestMatched": true
+    },
+    {
+      "name": "Meonjakju-0.5.2-mac-x64.zip",
+      "bytes": 141940375,
+      "sha256": "bc594e40d9e1b79b593cda0cf21b7868aba236be85068040d8f34b890e874bd6",
+      "githubDigestMatched": true
+    },
+    {
+      "name": "Meonjakju-0.5.2-mac-x64.zip.blockmap",
+      "bytes": 149348,
+      "sha256": "ad10b8d85bccd5b268ff1c83f131973b383ccc3d6df88f43d645d8c61764d2c7",
+      "githubDigestMatched": true
+    },
+    {
+      "name": "Meonjakju-0.5.2-win-x64.exe",
+      "bytes": 116785040,
+      "sha256": "dd96205a3d4f5260e7a8d456b649f5563e75ecc409776abbe5772416cef6c44f",
+      "githubDigestMatched": true
+    },
+    {
+      "name": "Meonjakju-0.5.2-win-x64.exe.blockmap",
+      "bytes": 123142,
+      "sha256": "6200ad6e10026c35571e3db74497385daff9d20520346c7e001d0fd9920455e6",
+      "githubDigestMatched": true
+    },
+    {
+      "name": "Meonjakju-0.5.2-win-x64.zip",
+      "bytes": 159552578,
+      "sha256": "5bcac1f73e028f457a49f19886e99817aec8cfb35a49ab02d883cf25b7e43bc9",
+      "githubDigestMatched": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-22T07:04:08.807Z",
+  "passed": true,
+  "release": {
+    "id": 420386259,
+    "version": "v0.5.2",
+    "url": "https://github.com/iam-yeseo/chiikawa-stock/releases/tag/v0.5.2",
+    "prerelease": false,
+    "draft": false,
+    "latestEndpointVerified": true,
+    "assetsUnchanged": true,
+    "assetCount": 10
+  },
+  "updates": [
+    {
+      "arch": "arm64",
+      "state": {
+        "status": "available",
+        "mode": "manual",
+        "currentVersion": "0.5.1",
+        "latestVersion": "0.5.2",
+        "progress": 0,
+        "message": "0.5.2 업데이트가 있어요. 다운로드 후 앱을 교체해 주세요."
+      },
+      "downloadURL": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.2/Meonjakju-0.5.2-mac-arm64.zip",
+      "browserOpen": "recorded callback only; actual Chrome download and native launch are in browser-first-launch.json"
+    },
+    {
+      "arch": "x64",
+      "state": {
+        "status": "available",
+        "mode": "manual",
+        "currentVersion": "0.5.1",
+        "latestVersion": "0.5.2",
+        "progress": 0,
+        "message": "0.5.2 업데이트가 있어요. 다운로드 후 앱을 교체해 주세요."
+      },
+      "downloadURL": "https://github.com/iam-yeseo/chiikawa-stock/releases/download/v0.5.2/Meonjakju-0.5.2-mac-x64.zip",
+      "browserOpen": "recorded callback only; actual Chrome download and native launch are in browser-first-launch.json"
+    }
+  ],
+  "currentState": {
+    "status": "current",
+    "mode": "manual",
+    "currentVersion": "0.5.2",
+    "latestVersion": null,
+    "progress": 0,
+    "message": "최신 버전을 사용하고 있어요."
+  }
+}

@@ -1,0 +1,2997 @@
+{
+  "passed": true,
+  "version": "0.5.2",
+  "packaged": false,
+  "platform": "win32",
+  "arch": "x64",
+  "mode": "isolated demo",
+  "selection": [
+    {
+      "id": "hachiware",
+      "name": "하치와레",
+      "draftsPreserved": true,
+      "persistedConfigPreserved": true
+    },
+    {
+      "id": "usagi",
+      "name": "우사기",
+      "draftsPreserved": true,
+      "persistedConfigPreserved": true
+    },
+    {
+      "id": "chiikawa",
+      "name": "치이카와",
+      "draftsPreserved": true,
+      "persistedConfigPreserved": true
+    },
+    {
+      "id": "usagi",
+      "name": "우사기",
+      "draftsPreserved": true,
+      "persistedConfigPreserved": true
+    },
+    {
+      "id": "hachiware",
+      "name": "하치와레",
+      "draftsPreserved": true,
+      "persistedConfigPreserved": true
+    },
+    {
+      "id": "chiikawa",
+      "name": "치이카와",
+      "draftsPreserved": true,
+      "persistedConfigPreserved": true
+    },
+    {
+      "id": "usagi",
+      "name": "우사기",
+      "draftsPreserved": true,
+      "persistedConfigPreserved": true
+    },
+    {
+      "id": "chiikawa",
+      "name": "치이카와",
+      "draftsPreserved": true,
+      "persistedConfigPreserved": true
+    },
+    {
+      "id": "hachiware",
+      "name": "하치와레",
+      "draftsPreserved": true,
+      "persistedConfigPreserved": true
+    },
+    {
+      "id": "usagi",
+      "name": "우사기",
+      "draftsPreserved": true,
+      "persistedConfigPreserved": true
+    }
+  ],
+  "characters": [
+    {
+      "id": "chiikawa",
+      "fingerprint": {
+        "hash": "1f494dc9",
+        "visible": 12076,
+        "bodyPixels": 11364,
+        "nearOpaque": 10580,
+        "opaqueWhite": 7959,
+        "bounds": {
+          "minX": 14,
+          "minY": 12,
+          "maxX": 135,
+          "maxY": 140
+        },
+        "width": 150,
+        "height": 150
+      },
+      "actions": [
+        {
+          "action": "walk",
+          "samples": [
+            {
+              "ms": 2,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 0,
+              "phase": "still",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0.183px) rotate(0deg)"
+            },
+            {
+              "ms": 79,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 4,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.015px) rotate(0deg)"
+            },
+            {
+              "ms": 157,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 4,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.209px) rotate(0deg)"
+            },
+            {
+              "ms": 235,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 4,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.415px) rotate(0deg)"
+            },
+            {
+              "ms": 312,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 5,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.499px) rotate(0deg)"
+            },
+            {
+              "ms": 437,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 5,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.28px) rotate(0deg)"
+            },
+            {
+              "ms": 513,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 5,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.087px) rotate(0deg)"
+            },
+            {
+              "ms": 592,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 6,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.03px) rotate(0deg)"
+            },
+            {
+              "ms": 669,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 6,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.151px) rotate(0deg)"
+            },
+            {
+              "ms": 746,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 6,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.359px) rotate(0deg)"
+            },
+            {
+              "ms": 823,
+              "character": "chiikawa",
+              "action": "walk",
+              "frame": 7,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.492px) rotate(0deg)"
+            }
+          ]
+        },
+        {
+          "action": "happy",
+          "samples": [
+            {
+              "ms": 1,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 7,
+              "phase": "small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.384px) rotate(0deg)"
+            },
+            {
+              "ms": 78,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.059px) rotate(0deg)"
+            },
+            {
+              "ms": 155,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.009px) rotate(0deg)"
+            },
+            {
+              "ms": 232,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.001px) rotate(0deg)"
+            },
+            {
+              "ms": 310,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 388,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 465,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 542,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 619,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 697,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 775,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 9,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 853,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 9,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 933,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 9,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.795px) rotate(0deg)"
+            },
+            {
+              "ms": 1011,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 10,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -4.162px) rotate(0deg)"
+            },
+            {
+              "ms": 1089,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 10,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -7.114px) rotate(0deg)"
+            },
+            {
+              "ms": 1167,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 10,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -8.956px) rotate(0deg)"
+            },
+            {
+              "ms": 1246,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 10,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -9.577px) rotate(0deg)"
+            },
+            {
+              "ms": 1374,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 10,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -7.999px) rotate(0deg)"
+            },
+            {
+              "ms": 1451,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 9,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -5.405px) rotate(0deg)"
+            },
+            {
+              "ms": 1530,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 9,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.672px) rotate(0deg)"
+            },
+            {
+              "ms": 1606,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 9,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.257px) rotate(0deg)"
+            },
+            {
+              "ms": 1683,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.039px) rotate(0deg)"
+            },
+            {
+              "ms": 1760,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.006px) rotate(0deg)"
+            },
+            {
+              "ms": 1838,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.001px) rotate(0deg)"
+            },
+            {
+              "ms": 1916,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1994,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2071,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2148,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2229,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2306,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2389,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2465,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2543,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2621,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2698,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 9,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.021px) rotate(0deg)"
+            },
+            {
+              "ms": 2776,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 10,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -3.446px) rotate(0deg)"
+            },
+            {
+              "ms": 2853,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 10,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -5.265px) rotate(0deg)"
+            },
+            {
+              "ms": 2931,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 10,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -6.131px) rotate(0deg)"
+            },
+            {
+              "ms": 3009,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 10,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -5.982px) rotate(0deg)"
+            },
+            {
+              "ms": 3088,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 10,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -4.813px) rotate(0deg)"
+            },
+            {
+              "ms": 3166,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 9,
+              "phase": "small-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -2.618px) rotate(0deg)"
+            },
+            {
+              "ms": 3244,
+              "character": "chiikawa",
+              "action": "happy",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.474px) rotate(0deg)"
+            }
+          ]
+        },
+        {
+          "action": "cry",
+          "samples": [
+            {
+              "ms": 1,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 11,
+              "phase": "quiet-smile",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.034px) rotate(0deg)"
+            },
+            {
+              "ms": 79,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 12,
+              "phase": "freeze",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.005px) rotate(0deg)"
+            },
+            {
+              "ms": 157,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 12,
+              "phase": "freeze",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.001px) rotate(0deg)"
+            },
+            {
+              "ms": 234,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 12,
+              "phase": "freeze",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 312,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 12,
+              "phase": "freeze",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 390,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 12,
+              "phase": "freeze",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 467,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 12,
+              "phase": "freeze",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 545,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 12,
+              "phase": "freeze",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 622,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 12,
+              "phase": "freeze",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 699,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 12,
+              "phase": "freeze",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 776,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 12,
+              "phase": "freeze",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 853,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 931,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1008,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1087,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1166,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1278,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1354,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1431,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1508,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1585,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1663,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1741,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 13,
+              "phase": "tears-well",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1821,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 14,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0.007px, -0.022px) rotate(0deg)"
+            },
+            {
+              "ms": 1899,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 14,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(-0.079px, -0.184px) rotate(0deg)"
+            },
+            {
+              "ms": 1977,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 14,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0.126px, -0.344px) rotate(0deg)"
+            },
+            {
+              "ms": 2054,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 14,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(-0.068px, -0.429px) rotate(0deg)"
+            },
+            {
+              "ms": 2132,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 14,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0.021px, -0.414px) rotate(0deg)"
+            },
+            {
+              "ms": 2211,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 14,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(-0.037px, -0.301px) rotate(0deg)"
+            },
+            {
+              "ms": 2293,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 14,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0.005px, -0.117px) rotate(0deg)"
+            },
+            {
+              "ms": 2370,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 15,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0.001px, -0.018px) rotate(0deg)"
+            },
+            {
+              "ms": 2447,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 15,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.003px) rotate(0deg)"
+            },
+            {
+              "ms": 2524,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 15,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2603,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 15,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2681,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 15,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2761,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 15,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2838,
+              "character": "chiikawa",
+              "action": "cry",
+              "frame": 15,
+              "phase": "quiet-sob",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            }
+          ]
+        }
+      ],
+      "sizes": [
+        {
+          "size": 90,
+          "hash": "29b0980a",
+          "visible": 4350,
+          "bodyPixels": 4079,
+          "nearOpaque": 3801,
+          "opaqueWhite": 2882,
+          "bounds": {
+            "minX": 8,
+            "minY": 7,
+            "maxX": 81,
+            "maxY": 84
+          },
+          "width": 90,
+          "height": 90
+        },
+        {
+          "size": 280,
+          "hash": "40ed0a86",
+          "visible": 41757,
+          "bodyPixels": 39328,
+          "nearOpaque": 37135,
+          "opaqueWhite": 28743,
+          "bounds": {
+            "minX": 26,
+            "minY": 21,
+            "maxX": 253,
+            "maxY": 262
+          },
+          "width": 280,
+          "height": 280
+        }
+      ],
+      "reducedMotionStatic": true
+    },
+    {
+      "id": "hachiware",
+      "fingerprint": {
+        "hash": "a8669ad7",
+        "visible": 12046,
+        "bodyPixels": 11495,
+        "nearOpaque": 10767,
+        "opaqueWhite": 6605,
+        "bounds": {
+          "minX": 16,
+          "minY": 8,
+          "maxX": 134,
+          "maxY": 140
+        },
+        "width": 150,
+        "height": 150
+      },
+      "actions": [
+        {
+          "action": "walk",
+          "samples": [
+            {
+              "ms": 1,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 0,
+              "phase": "curious-look",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0.139px) rotate(0deg)"
+            },
+            {
+              "ms": 78,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 4,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.126px) rotate(0.15deg)"
+            },
+            {
+              "ms": 156,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 4,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.686px) rotate(0.363deg)"
+            },
+            {
+              "ms": 233,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 5,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.097px) rotate(0.474deg)"
+            },
+            {
+              "ms": 311,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 5,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.897px) rotate(0.43deg)"
+            },
+            {
+              "ms": 433,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 6,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.116px) rotate(0.088deg)"
+            },
+            {
+              "ms": 510,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 6,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.262px) rotate(-0.186deg)"
+            },
+            {
+              "ms": 586,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 6,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.82px) rotate(-0.398deg)"
+            },
+            {
+              "ms": 663,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 7,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.11px) rotate(-0.478deg)"
+            },
+            {
+              "ms": 741,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 7,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.78px) rotate(-0.399deg)"
+            },
+            {
+              "ms": 820,
+              "character": "hachiware",
+              "action": "walk",
+              "frame": 7,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.231px) rotate(-0.188deg)"
+            }
+          ]
+        },
+        {
+          "action": "happy",
+          "samples": [
+            {
+              "ms": 1,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 4,
+              "phase": "curious-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.273px) rotate(0.192deg)"
+            },
+            {
+              "ms": 79,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.042px) rotate(0.029deg)"
+            },
+            {
+              "ms": 156,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.006px) rotate(0.005deg)"
+            },
+            {
+              "ms": 234,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 8,
+              "phase": "notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.001px) rotate(0.001deg)"
+            },
+            {
+              "ms": 311,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 9,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 388,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 9,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 465,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 9,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.412px) rotate(0deg)"
+            },
+            {
+              "ms": 543,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -5.534px) rotate(0deg)"
+            },
+            {
+              "ms": 621,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -10.327px) rotate(0deg)"
+            },
+            {
+              "ms": 699,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -12.84px) rotate(0deg)"
+            },
+            {
+              "ms": 777,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -12.773px) rotate(0deg)"
+            },
+            {
+              "ms": 855,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -10.079px) rotate(0deg)"
+            },
+            {
+              "ms": 933,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 9,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -4.742px) rotate(0deg)"
+            },
+            {
+              "ms": 1010,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.75px) rotate(0deg)"
+            },
+            {
+              "ms": 1088,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.115px) rotate(0deg)"
+            },
+            {
+              "ms": 1168,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 9,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.315px) rotate(0deg)"
+            },
+            {
+              "ms": 1247,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -5.691px) rotate(0deg)"
+            },
+            {
+              "ms": 1374,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -10.403px) rotate(0deg)"
+            },
+            {
+              "ms": 1451,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -10.927px) rotate(0deg)"
+            },
+            {
+              "ms": 1527,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -9.507px) rotate(0deg)"
+            },
+            {
+              "ms": 1605,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 9,
+              "phase": "two-little-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -6.127px) rotate(0deg)"
+            },
+            {
+              "ms": 1683,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.491px) rotate(0deg)"
+            },
+            {
+              "ms": 1760,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.229px) rotate(0deg)"
+            },
+            {
+              "ms": 1837,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.035px) rotate(0.105deg)"
+            },
+            {
+              "ms": 1914,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.005px) rotate(0.44deg)"
+            },
+            {
+              "ms": 1992,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.001px) rotate(0.597deg)"
+            },
+            {
+              "ms": 2068,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0.52deg)"
+            },
+            {
+              "ms": 2145,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0.176deg)"
+            },
+            {
+              "ms": 2223,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(-0.26deg)"
+            },
+            {
+              "ms": 2300,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(-0.56deg)"
+            },
+            {
+              "ms": 2377,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(-0.57deg)"
+            },
+            {
+              "ms": 2454,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(-0.285deg)"
+            },
+            {
+              "ms": 2532,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(-0.044deg)"
+            },
+            {
+              "ms": 2610,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(-0.007deg)"
+            },
+            {
+              "ms": 2687,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(-0.001deg)"
+            },
+            {
+              "ms": 2764,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2840,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2917,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2995,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 3072,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 3149,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 3226,
+              "character": "hachiware",
+              "action": "happy",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            }
+          ]
+        },
+        {
+          "action": "cry",
+          "samples": [
+            {
+              "ms": 1,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 11,
+              "phase": "friendly-wave",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 77,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 12,
+              "phase": "surprised",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 154,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 12,
+              "phase": "surprised",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 233,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 12,
+              "phase": "surprised",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 309,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 12,
+              "phase": "surprised",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 386,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 13,
+              "phase": "worried",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 464,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 13,
+              "phase": "worried",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 540,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 13,
+              "phase": "worried",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 618,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 13,
+              "phase": "worried",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 696,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 13,
+              "phase": "worried",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 773,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 13,
+              "phase": "worried",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 850,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 14,
+              "phase": "brief-tears",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.022px) rotate(0deg)"
+            },
+            {
+              "ms": 927,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 14,
+              "phase": "brief-tears",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.236px) rotate(0deg)"
+            },
+            {
+              "ms": 1004,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 14,
+              "phase": "brief-tears",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.402px) rotate(0deg)"
+            },
+            {
+              "ms": 1081,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 14,
+              "phase": "brief-tears",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.244px) rotate(0deg)"
+            },
+            {
+              "ms": 1158,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 14,
+              "phase": "brief-tears",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.051px) rotate(0deg)"
+            },
+            {
+              "ms": 1280,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 14,
+              "phase": "brief-tears",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.322px) rotate(0deg)"
+            },
+            {
+              "ms": 1357,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 14,
+              "phase": "brief-tears",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.382px) rotate(0deg)"
+            },
+            {
+              "ms": 1434,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 14,
+              "phase": "brief-tears",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.159px) rotate(0deg)"
+            },
+            {
+              "ms": 1512,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 14,
+              "phase": "brief-tears",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.055px) rotate(0deg)"
+            },
+            {
+              "ms": 1590,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 14,
+              "phase": "brief-tears",
+              "tears": "flowing",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.258px) rotate(0deg)"
+            },
+            {
+              "ms": 1667,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 15,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.18px) rotate(0deg)"
+            },
+            {
+              "ms": 1744,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 15,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.028px) rotate(0deg)"
+            },
+            {
+              "ms": 1822,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 15,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.004px) rotate(0deg)"
+            },
+            {
+              "ms": 1899,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 15,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.001px) rotate(0deg)"
+            },
+            {
+              "ms": 1977,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 15,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2053,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 15,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2130,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 15,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2207,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 15,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2283,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 15,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2362,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 2,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2438,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 2,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2515,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 2,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2592,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 2,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2669,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 2,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2746,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 2,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2823,
+              "character": "hachiware",
+              "action": "cry",
+              "frame": 2,
+              "phase": "gather-courage",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            }
+          ]
+        }
+      ],
+      "sizes": [
+        {
+          "size": 90,
+          "hash": "743f4dca",
+          "visible": 4339,
+          "bodyPixels": 4132,
+          "nearOpaque": 3852,
+          "opaqueWhite": 2349,
+          "bounds": {
+            "minX": 9,
+            "minY": 5,
+            "maxX": 80,
+            "maxY": 84
+          },
+          "width": 90,
+          "height": 90
+        },
+        {
+          "size": 280,
+          "hash": "ebe31cd6",
+          "visible": 41914,
+          "bodyPixels": 39783,
+          "nearOpaque": 37744,
+          "opaqueWhite": 23727,
+          "bounds": {
+            "minX": 29,
+            "minY": 15,
+            "maxX": 250,
+            "maxY": 262
+          },
+          "width": 280,
+          "height": 280
+        }
+      ],
+      "reducedMotionStatic": true
+    },
+    {
+      "id": "usagi",
+      "fingerprint": {
+        "hash": "d6a7c406",
+        "visible": 8838,
+        "bodyPixels": 8267,
+        "nearOpaque": 7497,
+        "opaqueWhite": 8,
+        "bounds": {
+          "minX": 27,
+          "minY": 3,
+          "maxX": 122,
+          "maxY": 140
+        },
+        "width": 150,
+        "height": 150
+      },
+      "actions": [
+        {
+          "action": "walk",
+          "samples": [
+            {
+              "ms": 1,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 0,
+              "phase": "steady-look",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 78,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 4,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.537px) rotate(0.305deg)"
+            },
+            {
+              "ms": 157,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 5,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.735px) rotate(0.617deg)"
+            },
+            {
+              "ms": 234,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 5,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.32px) rotate(0.545deg)"
+            },
+            {
+              "ms": 311,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 6,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.288px) rotate(0.11deg)"
+            },
+            {
+              "ms": 436,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 6,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.665px) rotate(-0.591deg)"
+            },
+            {
+              "ms": 513,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 7,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.456px) rotate(-0.574deg)"
+            },
+            {
+              "ms": 590,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 4,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.336px) rotate(-0.17deg)"
+            },
+            {
+              "ms": 668,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 4,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.818px) rotate(0.349deg)"
+            },
+            {
+              "ms": 745,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 5,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.821px) rotate(0.632deg)"
+            },
+            {
+              "ms": 822,
+              "character": "usagi",
+              "action": "walk",
+              "frame": 5,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.095px) rotate(0.489deg)"
+            }
+          ]
+        },
+        {
+          "action": "happy",
+          "samples": [
+            {
+              "ms": 1,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 6,
+              "phase": "quick-small-steps",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.473px) rotate(-0.197deg)"
+            },
+            {
+              "ms": 78,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 8,
+              "phase": "brief-notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.073px) rotate(-0.03deg)"
+            },
+            {
+              "ms": 155,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 8,
+              "phase": "brief-notice",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.011px) rotate(-0.005deg)"
+            },
+            {
+              "ms": 232,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 9,
+              "phase": "ready-hop",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.002px) rotate(-0.001deg)"
+            },
+            {
+              "ms": 310,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 9,
+              "phase": "two-quick-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -2.089px) rotate(0.181deg)"
+            },
+            {
+              "ms": 387,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-quick-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -7.205px) rotate(0.512deg)"
+            },
+            {
+              "ms": 464,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-quick-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -10.341px) rotate(0.291deg)"
+            },
+            {
+              "ms": 542,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-quick-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -10.532px) rotate(-0.274deg)"
+            },
+            {
+              "ms": 620,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-quick-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -7.645px) rotate(-0.504deg)"
+            },
+            {
+              "ms": 697,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -2.115px) rotate(-0.159deg)"
+            },
+            {
+              "ms": 774,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.325px) rotate(-0.024deg)"
+            },
+            {
+              "ms": 851,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 9,
+              "phase": "two-quick-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -1.066px) rotate(0.117deg)"
+            },
+            {
+              "ms": 928,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-quick-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -5.065px) rotate(0.495deg)"
+            },
+            {
+              "ms": 1006,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-quick-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -7.573px) rotate(0.257deg)"
+            },
+            {
+              "ms": 1083,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 10,
+              "phase": "two-quick-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -7.494px) rotate(-0.338deg)"
+            },
+            {
+              "ms": 1160,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 9,
+              "phase": "two-quick-hops",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -4.658px) rotate(-0.441deg)"
+            },
+            {
+              "ms": 1238,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.889px) rotate(-0.088deg)"
+            },
+            {
+              "ms": 1352,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.064px) rotate(-0.006deg)"
+            },
+            {
+              "ms": 1430,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.01px) rotate(-0.001deg)"
+            },
+            {
+              "ms": 1507,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.002px) rotate(0deg)"
+            },
+            {
+              "ms": 1583,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1660,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1737,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1816,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1892,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1972,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2048,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2125,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2201,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2278,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2356,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2433,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2509,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2586,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2662,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2739,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2817,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2894,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2972,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 3050,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 3127,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 3204,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 3280,
+              "character": "usagi",
+              "action": "happy",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            }
+          ]
+        },
+        {
+          "action": "cry",
+          "samples": [
+            {
+              "ms": 1,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 11,
+              "phase": "calm-settle",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 78,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 12,
+              "phase": "small-pause",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 155,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 12,
+              "phase": "small-pause",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 231,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 12,
+              "phase": "small-pause",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 309,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 12,
+              "phase": "small-pause",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 386,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 13,
+              "phase": "small-lean",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0.045deg)"
+            },
+            {
+              "ms": 464,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 13,
+              "phase": "small-lean",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0.306deg)"
+            },
+            {
+              "ms": 542,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 13,
+              "phase": "small-lean",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0.462deg)"
+            },
+            {
+              "ms": 619,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 13,
+              "phase": "small-lean",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0.369deg)"
+            },
+            {
+              "ms": 696,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 14,
+              "phase": "light-foot-tap",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0.002px, -0.003px) rotate(0.128deg)"
+            },
+            {
+              "ms": 774,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 14,
+              "phase": "light-foot-tap",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0.094px, -0.165px) rotate(0.333deg)"
+            },
+            {
+              "ms": 852,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 14,
+              "phase": "light-foot-tap",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0.319px, -0.558px) rotate(0.454deg)"
+            },
+            {
+              "ms": 929,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 14,
+              "phase": "light-foot-tap",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0.494px, -0.864px) rotate(0.315deg)"
+            },
+            {
+              "ms": 1006,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 14,
+              "phase": "light-foot-tap",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0.568px, -0.994px) rotate(-0.062deg)"
+            },
+            {
+              "ms": 1083,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 14,
+              "phase": "light-foot-tap",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0.435px, -0.761px) rotate(-0.39deg)"
+            },
+            {
+              "ms": 1160,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 14,
+              "phase": "light-foot-tap",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0.199px, -0.348px) rotate(-0.418deg)"
+            },
+            {
+              "ms": 1278,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0.013px, -0.022px) rotate(-0.044deg)"
+            },
+            {
+              "ms": 1355,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0.002px, -0.003px) rotate(-0.007deg)"
+            },
+            {
+              "ms": 1432,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, -0.001px) rotate(-0.001deg)"
+            },
+            {
+              "ms": 1509,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1586,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1663,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1740,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1817,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1894,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 1971,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2047,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2124,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2201,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2277,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2354,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2431,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2508,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2585,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2663,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2740,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            },
+            {
+              "ms": 2817,
+              "character": "usagi",
+              "action": "cry",
+              "frame": 15,
+              "phase": "calm-recover",
+              "tears": "still",
+              "reducedMotion": "false",
+              "transform": "translate(0px, 0px) rotate(0deg)"
+            }
+          ]
+        }
+      ],
+      "sizes": [
+        {
+          "size": 90,
+          "hash": "ea9281c5",
+          "visible": 3184,
+          "bodyPixels": 2983,
+          "nearOpaque": 2710,
+          "opaqueWhite": 3,
+          "bounds": {
+            "minX": 16,
+            "minY": 2,
+            "maxX": 73,
+            "maxY": 84
+          },
+          "width": 90,
+          "height": 90
+        },
+        {
+          "size": 280,
+          "hash": "eda65d4f",
+          "visible": 30790,
+          "bodyPixels": 28653,
+          "nearOpaque": 26521,
+          "opaqueWhite": 59,
+          "bounds": {
+            "minX": 51,
+            "minY": 5,
+            "maxX": 228,
+            "maxY": 262
+          },
+          "width": 280,
+          "height": 280
+        }
+      ],
+      "reducedMotionStatic": true
+    }
+  ],
+  "errors": [],
+  "restartPreservedSelection": true,
+  "unsavedDraftsNotPersisted": true,
+  "profileCleaned": true,
+  "elapsedMs": 29327
+}

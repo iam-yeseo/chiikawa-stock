@@ -1,3 +1,15 @@
+# 0.5.2 자체 서명·다운로드 실행 검증
+
+Mac 서명을 완전한 ad-hoc 방식으로 바꾸고 140개 단위 테스트, Mac·Windows 전체 CI, 두 Mac ZIP의 strict/deep 서명 검사, 공개 파일 10개의 SHA-256과 업데이트 피드 SHA-512 대조를 통과했다.
+
+Chrome에서 받은 arm64 ZIP을 macOS 기본 도구로 풀어 설치했다. 사용자가 보안 설정에서 허용한 뒤 실행됐고, 네이티브 화면의 0.5.2 표시와 실행 중 파일·다운로드본의 해시 일치를 확인했다. 다운로드 격리 속성을 제거하거나 전체 Gatekeeper를 끄지 않았다. 추가 기능 검사는 별도 데모 프로필에서 arm64와 Rosetta x64 모두 통과했다.
+
+[0.5.2 검증 자료](docs/verification/0.5.2/README.md) · [받는 사람용 실행 안내](docs/mac-install.txt) · [0.5.2 릴리스](https://github.com/iam-yeseo/chiikawa-stock/releases/tag/v0.5.2).
+
+Apple 공증은 없다. 최초 실행 시 앱별 허용이 필요할 수 있다. 실제 첫 실행 검증은 기존 버전이 설치된 Apple Silicon/macOS 27.0.1 환경이며, Intel 실기기와 다른 macOS 환경은 미확인이다. Windows는 네이티브 CI의 패키지 실행 검사 범위다.
+
+---
+
 # 0.5.1 산책 모드 검증
 
 140개 단위 테스트와 실제 Electron 기본 실행·산책·계좌·캐릭터·브랜드/업데이트 검사를 통과했다. [산책 모드 통합 기록](docs/verification/0.5.1/companion-0.5.1.json)은 API 없이 전환, 캐릭터 이름 위/대사 아래 배치, 세 캐릭터별 12개 대사, 실제 화면 이동, 금융 이벤트 차단, 랜덤 말풍선, 재실행 복원과 이전 모드 복귀를 검사한다. [검증 자료](docs/verification/0.5.1/README.md)에 화면과 패키지 일치 기록을 보존한다.

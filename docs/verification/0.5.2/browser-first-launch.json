@@ -1,0 +1,53 @@
+{
+  "version": "0.5.2",
+  "at": "2026-10-22T06:47:02.876198+00:00",
+  "browser": "Google Chrome",
+  "asset": "Meonjakju-0.5.2-mac-arm64.zip",
+  "bytes": 135094532,
+  "sha256": "bf642b12b9bd33ed75eb97705cdfd4b6d38e7ad587dc5b70c59d0e3b67c165cb",
+  "githubDigestMatched": true,
+  "downloadQuarantine": "0081;6ad9b143;Chrome;96F03177-7AE8-497E-88A7-2587977AD847",
+  "globalGatekeeper": "enabled",
+  "quarantineRemoved": false,
+  "firstLaunchVerified": true,
+  "archiveUtilityExtracted": true,
+  "extractedQuarantine": "0081;6ad9b143;Chrome;96F03177-7AE8-497E-88A7-2587977AD847",
+  "strictSignatureVerified": true,
+  "completedAt": "2026-10-22T07:00:55.518227+00:00",
+  "approvalPerformedBy": "user",
+  "approvalUserReport": "설정 - 보안 가서 허용하니까 열렸음",
+  "nativeUIVerified": {
+    "windowTitle": "먼작주 0.5.2",
+    "preferencesVisible": true,
+    "companionModeActive": true,
+    "mode": "existing user profile; companion mode active; no account or API settings opened"
+  },
+  "quarantineAfterApproval": "00c1;00000000;;96F03177-7AE8-497E-88A7-2587977AD847",
+  "globalGatekeeperAfter": "enabled",
+  "artifactIdentity": {
+    "installed": {
+      "version": "0.5.2",
+      "signatureVerified": true,
+      "appAsarSHA256": "867cc28021c21be89cb81c3d0621e972f06d72970b6c344ba1ea5ff1913b08a9",
+      "executableSHA256": "5ac5c8634bdfc87e217bcb6de10b07e8e43e90875a923496f3ab8c2e0d957c44"
+    },
+    "browserExtracted": {
+      "version": "0.5.2",
+      "signatureVerified": true,
+      "appAsarSHA256": "867cc28021c21be89cb81c3d0621e972f06d72970b6c344ba1ea5ff1913b08a9",
+      "executableSHA256": "5ac5c8634bdfc87e217bcb6de10b07e8e43e90875a923496f3ab8c2e0d957c44"
+    },
+    "running": {
+      "version": "0.5.2",
+      "signatureVerified": true,
+      "appAsarSHA256": "867cc28021c21be89cb81c3d0621e972f06d72970b6c344ba1ea5ff1913b08a9",
+      "executableSHA256": "5ac5c8634bdfc87e217bcb6de10b07e8e43e90875a923496f3ab8c2e0d957c44"
+    }
+  },
+  "screenshot": "native-first-launch.png",
+  "limitations": [
+    "Current Mac has previous versions installed; not a clean macOS account.",
+    "Apple Silicon macOS 27.0.1 only; Intel physical hardware not tested.",
+    "User performed the Security approval; dialog text and authentication were not captured."
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "version": "0.5.2",
+  "passed": true,
+  "feeds": [
+    {
+      "name": "latest-mac.yml",
+      "version": "0.5.2",
+      "files": [
+        {
+          "name": "Meonjakju-0.5.2-mac-x64.zip",
+          "bytes": 141940375,
+          "sha512": "HiDbePD2wVngx4pCNH7G9s7GHwUQBuqj6ePe3Th21paYZx3pPLiwl6HDJYzfmQyw25vIyYsNQbi38VeygP1lgw==",
+          "matched": true
+        },
+        {
+          "name": "Meonjakju-0.5.2-mac-arm64.zip",
+          "bytes": 135094532,
+          "sha512": "WKFB4yRjiRmHRHkha+urm/Fn0AnxZNwwx2HbPJSRB8YIBSK2NHCU8xiwY6cbv+9F2b4c6QSyavGwLZsQYPM95A==",
+          "matched": true
+        }
+      ]
+    },
+    {
+      "name": "latest.yml",
+      "version": "0.5.2",
+      "files": [
+        {
+          "name": "Meonjakju-0.5.2-win-x64.exe",
+          "bytes": 116785040,
+          "sha512": "WAbyqJlRzC51sM7cy2FYTmwruRej7WaL8BpeCENPxIvh9iNRAIpJyr6QJhAoR/ZOOaPVGhtnOCozED8PMkCnMw==",
+          "matched": true
+        }
+      ]
+    }
+  ]
+}
