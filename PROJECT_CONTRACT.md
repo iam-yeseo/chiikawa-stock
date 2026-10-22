@@ -31,7 +31,7 @@ Follow `AGENTS.md` after every update: finish validation and release, upload the
 - quit() -> void
 
 ## Snapshot
-{mode:'demo'|'live'|'offline', connection:{state:'idle'|'connecting'|'connected'|'error',message,updatedAt}, config, quotes:[], alerts:[], credentialsConfigured:boolean, version:'0.5.1'}
+{mode:'demo'|'live'|'offline', connection:{state:'idle'|'connecting'|'connected'|'error',message,updatedAt}, config, quotes:[], alerts:[], credentialsConfigured:boolean, version:'0.5.2'}
 
 Config: {intervalMinutes:5, baseline:'previousClose'|'purchase'|'custom'|'tracking', roaming:true, companionMode:false, petSize:150, speechScale:100, autoWatchHoldings:true, characterId:'chiikawa', watchlist:[{symbol,name,market:'KR'|'US',purchasePrice?:number,referencePrice?:number,trackingPrice?:number}]}. lib/characters.js is the shared catalog and motion profile registry. Planned characters cannot be selected until available. Missing legacy characterId defaults to chiikawa without resetting other preferences.
 
@@ -65,3 +65,7 @@ Visible brand is 먼작주; internal app name/userData remain Chiikawa Stocks to
 `companionMode` is a persisted, strictly boolean setting, default false for existing users. Enabling it stops quote/account monitoring and shows the pet, even if hidden. Startup with the setting enabled never starts market traffic. Prior demo/live/offline session preference and dormant `roaming` preference remain unchanged; disabling resumes the prior session. Explicit connect/demo actions leave companion mode before starting monitoring.
 
 The pet roams while companion mode is enabled even if ordinary roaming is off, while respecting OS reduced motion, dragging, hidden windows and context menus. It shows the selected character name above a brief random everyday line, immediately on entry/character change and then every 18–32 seconds. Dialogue avoids consecutive repeats, uses short hesitant sounds for Chiikawa, friendly Korean sentences for Hachiware and exclamations for Usagi. No stock, portfolio, threshold, connection or demo-price text appears in companion bubbles, including queued reports and in-flight events. Update notices remain available. Mode changes clear pending speech/reactions/reports. Preferences apply immediately and survive restart without API credentials.
+
+## 0.5.2 macOS ad-hoc distribution
+
+Mac bundles use explicit ad-hoc signing with hardened runtime and only allow-jit / disable-library-validation entitlements. No Apple Developer ID or notarization is claimed. Both architecture ZIPs must pass strict deep signature verification after extraction. A Gatekeeper rejection for an unnotarized ad-hoc app is expected and recorded separately from signature integrity; internal signing errors block release. First-launch user approval must be tested on an actual browser download, without disabling Gatekeeper globally. Tags publish a prerelease candidate; promote to stable only after download/launch verification. Include the Korean Mac installation guide. Keep the existing manual Mac update flow and internal app/userData identities.

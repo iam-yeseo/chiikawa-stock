@@ -1,7 +1,7 @@
 {
   "name": "chiikawa-stocks",
   "productName": "먼작주",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "먼작주 — 토스증권 시세를 알려주는 데스크톱 캐릭터",
   "private": true,
   "type": "module",
@@ -14,13 +14,14 @@
     "start": "electron .",
     "test": "node --test tests/*.test.js",
     "test:desktop": "node scripts/smoke-desktop.mjs",
-    "dist:mac": "npm run build && electron-builder --mac zip --arm64 --x64",
+    "dist:mac": "npm run build && electron-builder --mac zip --arm64 --x64 --publish never && node scripts/verify-mac-release.mjs",
     "dist:win": "npm run build && electron-builder --win nsis zip --x64",
     "dist:dir": "npm run build && electron-builder --dir",
     "test:roaming": "node scripts/smoke-roaming.mjs",
     "test:portfolio": "node scripts/smoke-portfolio.mjs",
     "test:characters": "node scripts/smoke-characters.mjs",
-    "test:companion": "node scripts/smoke-companion.mjs"
+    "test:companion": "node scripts/smoke-companion.mjs",
+    "verify:mac": "node scripts/verify-mac-release.mjs"
   },
   "dependencies": {
     "electron-updater": "6.8.9",
@@ -37,7 +38,7 @@
     "productName": "Meonjakju",
     "asar": true,
     "directories": {
-      "output": "release/0.5.1"
+      "output": "release/0.5.2"
     },
     "files": [
       "dist/**/*",
@@ -54,10 +55,16 @@
         "zip"
       ],
       "hardenedRuntime": true,
-      "identity": null,
+      "identity": "-",
       "extendInfo": {
         "CFBundleDisplayName": "먼작주"
-      }
+      },
+      "forceCodeSigning": true,
+      "notarize": false,
+      "strictVerify": true,
+      "preAutoEntitlements": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
     },
     "win": {
       "icon": "assets/character/app-icon.png",

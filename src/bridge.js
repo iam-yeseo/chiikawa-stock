@@ -41,7 +41,7 @@ function createBrowserDemo() {
   const motionListeners = new Set();
   const bulletinListeners = new Set();
   const state = {
-    version: '0.5.1', mode: 'demo', credentialsConfigured: false,
+    version: '0.5.2', mode: 'demo', credentialsConfigured: false,
     connection: {state: 'connected', message: '브라우저 미리보기 · 모든 가격은 가상 시세입니다.', updatedAt: Date.now()},
     config: normalizeConfig({watchlist: demoStocks.map(({market, symbol, name}) => ({market, symbol, name}))}),
     quotes: [], alerts: [],
@@ -85,7 +85,7 @@ function createBrowserDemo() {
     makeQuotes(); scheduleBulletin();
   };
   scheduleBulletin();
-  const updateState = {status: 'disabled', mode: 'disabled', currentVersion: '0.5.1', latestVersion: null, message: '브라우저 미리보기에서는 업데이트를 사용할 수 없어요. 데스크톱 앱에서 확인해 주세요.', progress: null};
+  const updateState = {status: 'disabled', mode: 'disabled', currentVersion: '0.5.2', latestVersion: null, message: '브라우저 미리보기에서는 업데이트를 사용할 수 없어요. 데스크톱 앱에서 확인해 주세요.', progress: null};
   return {
     async getState() {return clone(state);},
     async getUpdateState() {return clone(updateState);},
